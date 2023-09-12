@@ -12,5 +12,3 @@ require "keybindings"
 -- Initialize Plugin Manager
 require("lazy").setup("plugins")
 
--- Set colorscheme
-vim.cmd.colorscheme("dracula")
