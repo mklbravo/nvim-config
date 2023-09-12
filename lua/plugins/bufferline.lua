@@ -10,15 +10,17 @@ return {
   },
   version = "*",
   opts = {
-    separator_style = "padded_slant",
-    offsets = {
-      {
-        filetype = "neo-tree",
-        text = "Neo-tree",
-        highlight = "Directory",
-        text_align = "left",
-        separator = true,
+    options = {
+      offsets = {
+        {
+          filetype = "neo-tree",
+          text = "Explorer",
+          highlight = "Directory",
+          text_align = "left",
+          separator = true,
+        },
       },
+      separator_style = "padded_slant",
     },
-  }
+  },
 }
