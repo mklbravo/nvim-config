@@ -1,4 +1,6 @@
 --[[
+  Dracula colorscheme for neovim written in Lua   
+  See: https://github.com/Mofiqul/dracula.nvim
 ]]
 
 return {
