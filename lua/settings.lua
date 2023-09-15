@@ -1,20 +1,20 @@
 -- Global Variables {{{{
+vim.g.editorconfig = true   -- EditorConfig support
 vim.g.mapleader = ','
 vim.g.maplocalleader = ' '
-vim.g.editorconfig = true   -- EditorConfig support
 -- }}}}
 
 -- Options {{{{
 vim.o.mouse = 'a'   -- Enable trackpad/mouse selection
+vim.o.fillchars='eob: ' -- Set space as eob(end of buffer) character
 vim.o.number = true -- Show line numbers
 vim.o.swapfile = false -- Disable swapfile
 vim.o.termguicolors = true
 vim.o.wrap = false  -- Don't wrap long lines
-vim.o.fillchars='eob: ' -- Set space as eob(end of buffer) character
 
 -- Split Settings {{{
-vim.o.splitright = true -- Splitting a window will put the new window right
 vim.o.splitbelow = true -- Splitting a window will put the new window below
+vim.o.splitright = true -- Splitting a window will put the new window right
 -- }}}
 
 -- Tabs {{{
