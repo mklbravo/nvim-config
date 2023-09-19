@@ -12,3 +12,5 @@ require "keybindings"
 -- Initialize Plugin Manager
 require("lazy").setup("plugins")
 
+require 'config'
+
