@@ -4,23 +4,38 @@
 ]]
 
 return {
-  "akinsho/bufferline.nvim",
+  'akinsho/bufferline.nvim',
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
+    'nvim-tree/nvim-web-devicons',
   },
-  version = "*",
   opts = {
     options = {
+      always_show_bufferline = true,
+      close_icon = '',
+      color_icons = true,        -- whether or not to add the filetype icon highlights
+      enforce_regular_tabs = false,
+      left_trunc_marker = '',
+      mode = 'tabs',
+      numbers = 'ordinal',
       offsets = {
         {
-          filetype = "neo-tree",
-          text = "Explorer",
-          highlight = "Directory",
-          text_align = "left",
+          filetype = 'neo-tree',
+          highlight = 'Directory',
           separator = true,
+          text = 'Explorer',
+          text_align = 'left',
         },
       },
-      separator_style = "padded_slant",
+      persist_buffer_sort = true,    -- whether or not custom sorted buffers should persist
+      right_trunc_marker = '',
+      separator_style = 'thick',
+      show_buffer_icons = true, -- disable filetype icons for buffers
+      show_bufferclose_icons = false,
+      show_close_icon = false,
+      show_duplicate_prefix = false, -- whether to show duplicate buffer prefix
+      show_tab_indicators = false,
+      tab_size = 22,
     },
   },
+  version = '*',
 }
