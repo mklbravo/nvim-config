@@ -14,9 +14,3 @@ nm('<C-k>', '<C-w>k')
 nm('<C-l>', '<C-w>l')
 -- }}}}
 
-
--- This keymap allows passing functions
--- TODO: Improve this keymap
-vim.keymap.set( 'n', '<leader>gg', function()
-    require('lazy.util').float_term('lazygit',{ interactive = true })
- end)
