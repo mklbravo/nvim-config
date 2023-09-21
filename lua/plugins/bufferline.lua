@@ -8,6 +8,13 @@ return {
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
+  config = function(_, opts)
+    require('bufferline').setup(opts)
+
+    -- Set plugin related keymaps
+    vim.api.nvim_set_keymap('n', ']b',':BufferLineCycleNext<enter>', {})
+    vim.api.nvim_set_keymap('n', '[b',':BufferLineCyclePrev<enter>', {})
+  end,
   opts = {
     options = {
       always_show_bufferline = true,
