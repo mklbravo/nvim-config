@@ -15,7 +15,7 @@ return {
       color_icons = true,        -- whether or not to add the filetype icon highlights
       enforce_regular_tabs = false,
       left_trunc_marker = '',
-      mode = 'tabs',
+      mode = 'buffer',
       numbers = 'ordinal',
       offsets = {
         {
