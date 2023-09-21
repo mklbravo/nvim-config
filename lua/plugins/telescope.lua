@@ -9,6 +9,13 @@ return {
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
+  opts = {
+    defaults = {
+      file_ignore_patterns = {
+        'node_modules',
+      },
+    },
+  },
   keys = {
     { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Find files' }
   }
