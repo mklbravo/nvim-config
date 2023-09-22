@@ -1,16 +1,7 @@
-local map = vim.api.nvim_set_keymap -- Alias for function that set new keybindings
+-- Pane movement
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
--- Helper Functions {{{{
-function nm (key, command)
-  map('n', key, command , { noremap = true })
-end
-
--- }}}}
-
--- Movement {{{{
-nm('<C-h>', '<C-w>h')
-nm('<C-j>', '<C-w>j')
-nm('<C-k>', '<C-w>k')
-nm('<C-l>', '<C-w>l')
--- }}}}
 
