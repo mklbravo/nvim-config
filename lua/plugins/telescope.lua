@@ -6,6 +6,17 @@
 return {
   "nvim-telescope/telescope.nvim",
   tag = "0.1.3",
+  config = function(_, opts)
+    require('telescope').setup(opts)
+
+    local telescopeBuiltin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader>pf', telescopeBuiltin.find_files, { desc = 'Find files (root)'})
+    vim.keymap.set('n', '<C-p>', telescopeBuiltin.git_files, { desc = 'Find files (git)' })
+    vim.keymap.set('n', '<leader>ps', function()
+      telescopeBuiltin.grep_string({ search = vim.fn.input('Grep > ')})
+    end, { desc = 'Find IN files' })
+
+  end,
   dependencies = {
     "nvim-telescope/telescope.nvim",
   },
@@ -16,7 +27,4 @@ return {
       },
     },
   },
-  keys = {
-    { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Find files' }
-  }
 }
