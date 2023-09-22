@@ -10,8 +10,9 @@ return {
     require('telescope').setup(opts)
 
     local telescopeBuiltin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>pf', telescopeBuiltin.find_files, { desc = 'Find files (root)'})
+
     vim.keymap.set('n', '<C-p>', telescopeBuiltin.git_files, { desc = 'Find files (git)' })
+    vim.keymap.set('n', '<leader>pf', telescopeBuiltin.find_files, { desc = 'Find files (root)'})
     vim.keymap.set('n', '<leader>ps', telescopeBuiltin.live_grep, { desc = 'Find IN Files'})
 
   end,
