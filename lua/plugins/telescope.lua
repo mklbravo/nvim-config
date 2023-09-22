@@ -12,9 +12,7 @@ return {
     local telescopeBuiltin = require('telescope.builtin')
     vim.keymap.set('n', '<leader>pf', telescopeBuiltin.find_files, { desc = 'Find files (root)'})
     vim.keymap.set('n', '<C-p>', telescopeBuiltin.git_files, { desc = 'Find files (git)' })
-    vim.keymap.set('n', '<leader>ps', function()
-      telescopeBuiltin.grep_string({ search = vim.fn.input('Grep > ')})
-    end, { desc = 'Find IN files' })
+    vim.keymap.set('n', '<leader>ps', telescopeBuiltin.live_grep, { desc = 'Find IN Files'})
 
   end,
   dependencies = {
