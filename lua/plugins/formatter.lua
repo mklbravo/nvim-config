@@ -5,6 +5,17 @@
 return {
   "mhartington/formatter.nvim",
   config = function()
+    local util = require("formatter.util")
+
+    local opts = {
+      filetype = {
+        lua = {
+          require("formatter.filetypes.lua").stylua,
+        },
+      },
+    }
+
+    require("formatter").setup(opts)
   end,
   keys = {
     { "<leader>F", ":Format<CR>", mode = "n", desc = "Format document", silent = true },

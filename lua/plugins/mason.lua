@@ -5,5 +5,17 @@
 
 return {
   "williamboman/mason.nvim",
-  config = true,
+  dependencies = {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+  },
+  config = function(_, opts)
+    require("mason").setup(opts)
+
+    require("mason-tool-installer").setup({
+      ensure_installed = {
+        "stylua"
+      },
+      run_on_start = true,
+    })
+  end,
 }
