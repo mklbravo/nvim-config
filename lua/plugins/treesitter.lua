@@ -4,19 +4,19 @@
 ]]
 
 return {
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
-  config = function (_, opts)
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
   end,
   opts = {
     additional_vim_regex_highlighting = false,
     auto_install = true,
     ensure_installed = {
-      'lua',
+      "lua",
     },
     highlight = {
-      enable = true
+      enable = true,
     },
     sync_install = false,
   },

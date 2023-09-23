@@ -6,14 +6,13 @@
 return {
   "nvim-telescope/telescope.nvim",
   config = function(_, opts)
-    require('telescope').setup(opts)
+    require("telescope").setup(opts)
 
-    local telescopeBuiltin = require('telescope.builtin')
+    local telescopeBuiltin = require("telescope.builtin")
 
-    vim.keymap.set('n', '<C-p>', telescopeBuiltin.git_files, { desc = 'Find files (git)' })
-    vim.keymap.set('n', '<leader>pf', telescopeBuiltin.find_files, { desc = 'Find files (root)'})
-    vim.keymap.set('n', '<leader>ps', telescopeBuiltin.live_grep, { desc = 'Find IN Files'})
-
+    vim.keymap.set("n", "<C-p>", telescopeBuiltin.git_files, { desc = "Find files (git)" })
+    vim.keymap.set("n", "<leader>pf", telescopeBuiltin.find_files, { desc = "Find files (root)" })
+    vim.keymap.set("n", "<leader>ps", telescopeBuiltin.live_grep, { desc = "Find IN Files" })
   end,
   dependencies = {
     "nvim-telescope/telescope.nvim",
@@ -21,7 +20,7 @@ return {
   opts = {
     defaults = {
       file_ignore_patterns = {
-        'node_modules',
+        "node_modules",
       },
     },
   },

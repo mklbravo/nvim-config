@@ -9,7 +9,7 @@ return {
   opts = {
     current_line_blame = true,
     numhl = true,
-    signcolumn = true, 
+    signcolumn = true,
     signs = {
       add = { text = "▎" },
       change = { text = "▎" },

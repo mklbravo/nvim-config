@@ -4,8 +4,7 @@
 ]]
 
 return {
-  'echasnovski/mini.pairs',
+  "echasnovski/mini.pairs",
   config = true,
-  version = '*',
+  version = "*",
 }
-

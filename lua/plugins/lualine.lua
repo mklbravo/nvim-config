@@ -11,21 +11,21 @@ return {
   },
   opts = {
     options = {
-      globalstatus = true, 
+      globalstatus = true,
       icons_enabled = true,
-      theme = "dracula-nvim" ,
+      theme = "dracula-nvim",
     },
     sections = {
       -- Section C
       -- ---------
-      lualine_c = { 
+      lualine_c = {
         {
           "filetype",
           colored = true,
           icon_only = true,
           padding = {
             left = 1,
-            right = 0
+            right = 0,
           },
           separator = "",
         },
@@ -35,15 +35,15 @@ return {
           symbols = {
             modified = " ㋱ ",
             readonly = "",
-            unnamed = ""
+            unnamed = "",
           },
         },
       },
       -- Section X
       -- ---------
       lualine_x = {
-        'encoding',
-        'fileformat',
+        "encoding",
+        "fileformat",
       },
     },
   },
