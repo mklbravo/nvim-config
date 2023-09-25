@@ -5,9 +5,8 @@
 return {
   "mhartington/formatter.nvim",
   config = function()
-    local util = require("formatter.util")
-
     local opts = {
+
       filetype = {
         lua = {
           require("formatter.filetypes.lua").stylua,
