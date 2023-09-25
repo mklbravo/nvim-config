@@ -2,7 +2,6 @@
   "diagnostics": {
     "globals" : [
       "vim"
-
     ]
   }
 }
