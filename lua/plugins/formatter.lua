@@ -16,7 +16,11 @@ return {
 
     require("formatter").setup(opts)
   end,
-  keys = {
-    { "<leader>F", ":Format<CR>", mode = "n", desc = "Format document", silent = true },
-  },
+  keys = function()
+    vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = ":FormatWrite<CR>" })
+
+    return {
+      { "<leader>F", ":FormatWrite<CR>", mode = "n", desc = "Format document", silent = true },
+    }
+  end,
 }
