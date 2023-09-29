@@ -8,6 +8,7 @@ return {
   config = function()
     local lspConfig = require("lspconfig")
     lspConfig.lua_ls.setup({})
+    lspConfig.dockerls.setup({})
   end,
   dependencies = {
     "williamboman/mason.nvim",
