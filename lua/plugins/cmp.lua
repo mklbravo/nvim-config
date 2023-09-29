@@ -6,6 +6,7 @@
     * https://github.com/hrsh7th/cmp-buffer   -- nvim-cmp source for buffer words
     * https://github.com/hrsh7th/cmp-nvim-lsp -- nvim-cmp source for neovim builtin LSP client
     * https://github.com/hrsh7th/cmp-path     -- nvim-cmp source for path
+    * https://github.com/hrsh7th/cmp-cmdline  -- nvim-cmp source for cmline
 
   Tools:
     * https://github.com/onsails/lspkind.nvim -- vscode-like pictograms for neovim lsp completion items
