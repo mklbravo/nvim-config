@@ -22,11 +22,19 @@ return {
     },
     { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
   },
-  opt = {
   opts = {
     auto_clean_after_session_restore = true, -- Automatically clean up broken neo-tree buffers saved in sessions
     close_if_last_window = true,
     enable_diagnostics = true,
     enable_git_status = true,
+    source_selector = {
+      content_layout = "center",
+      sources = {
+        { source = "filesystem", display_name = " File" },
+        { source = "buffers", display_name = " 󰈙 Bufs" },
+        { source = "git_status", display_name = "󰊢 Git" },
+      },
+      winbar = true,
+    },
   },
 }
