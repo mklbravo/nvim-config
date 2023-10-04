@@ -77,6 +77,12 @@ return {
       follow_current_file = {
         enabled = true,
       },
+      filtered_items = {
+        never_show = {
+          ".git",
+        },
+        hide_dotfiles = false,
+      },
     },
     sources = {
       "buffers",
