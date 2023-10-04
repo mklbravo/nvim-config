@@ -12,16 +12,52 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   },
-  keys = {
-    {
-      "<leader>fe",
-      function()
-        require("neo-tree.command").execute({ focus = true, dir = vim.loop.cwd() })
-      end,
-      desc = "Explorer NeoTree (cwd)",
-    },
-    { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-  },
+  keys = function()
+    local neo_tree_command = require("neo-tree.command")
+    return {
+      {
+        "<leader>E",
+        function()
+          neo_tree_command.execute({
+            source = "last",
+            toggle = true,
+          })
+        end,
+        desc = "Show hidde explorer",
+      },
+      {
+        "<leader>ef",
+        function()
+          neo_tree_command.execute({
+            dir = vim.loop.cwd(),
+            focus = true,
+            source = "filesystem",
+          })
+        end,
+        desc = "Explore filesystem",
+      },
+      {
+        "<leader>eb",
+        function()
+          neo_tree_command.execute({
+            focus = true,
+            source = "buffers",
+          })
+        end,
+        desc = "Explore open buffers",
+      },
+      {
+        "<leader>eg",
+        function()
+          neo_tree_command.execute({
+            focus = true,
+            source = "git_status",
+          })
+        end,
+        desc = "Explore git status",
+      },
+    }
+  end,
   opts = {
     auto_clean_after_session_restore = true, -- Automatically clean up broken neo-tree buffers saved in sessions
     close_if_last_window = true,
