@@ -23,6 +23,7 @@ return {
     { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
   },
   opt = {
+  opts = {
     enable_diagnostics = true,
     enable_git_status = true,
   },
