@@ -56,6 +56,16 @@ return {
         end,
         desc = "Explore git status",
       },
+      {
+        "<leader>es",
+        function()
+          neo_tree_command.execute({
+            focus = true,
+            source = "document_symbols",
+          })
+        end,
+        desc = "Explore symbols",
+      },
     }
   end,
   opts = {
@@ -63,12 +73,19 @@ return {
     close_if_last_window = true,
     enable_diagnostics = true,
     enable_git_status = true,
+    sources = {
+      "buffers",
+      "document_symbols",
+      "filesystem",
+      "git_status",
+    },
     source_selector = {
       content_layout = "center",
       sources = {
         { source = "filesystem", display_name = " File" },
         { source = "buffers", display_name = " 󰈙 Bufs" },
         { source = "git_status", display_name = "󰊢 Git" },
+        { source = "document_symbols", display_name = " Symbols" },
       },
       winbar = true,
     },
