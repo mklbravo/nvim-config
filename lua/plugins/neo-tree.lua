@@ -24,6 +24,7 @@ return {
   },
   opt = {
   opts = {
+    auto_clean_after_session_restore = true, -- Automatically clean up broken neo-tree buffers saved in sessions
     enable_diagnostics = true,
     enable_git_status = true,
   },
