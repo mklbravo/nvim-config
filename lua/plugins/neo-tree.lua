@@ -29,8 +29,8 @@ return {
         "<leader>ef",
         function()
           neo_tree_command.execute({
+            action = "focus",
             dir = vim.loop.cwd(),
-            focus = true,
             source = "filesystem",
           })
         end,
@@ -40,7 +40,7 @@ return {
         "<leader>eb",
         function()
           neo_tree_command.execute({
-            focus = true,
+            action = "focus",
             source = "buffers",
           })
         end,
@@ -50,7 +50,7 @@ return {
         "<leader>eg",
         function()
           neo_tree_command.execute({
-            focus = true,
+            action = "focus",
             source = "git_status",
           })
         end,
@@ -60,7 +60,7 @@ return {
         "<leader>es",
         function()
           neo_tree_command.execute({
-            focus = true,
+            action = "focus",
             source = "document_symbols",
           })
         end,
