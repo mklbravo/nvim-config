@@ -26,6 +26,16 @@ return {
         desc = "Show hidde explorer",
       },
       {
+        "<leader>ee",
+        function()
+          neo_tree_command.execute({
+            action = "focus",
+            source = "last",
+          })
+        end,
+        desc = "Focus explorer",
+      },
+      {
         "<leader>ef",
         function()
           neo_tree_command.execute({
