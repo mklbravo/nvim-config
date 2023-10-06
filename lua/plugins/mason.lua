@@ -14,12 +14,7 @@ return {
     require("mason").setup(opts)
 
     require("mason-tool-installer").setup({
-      ensure_installed = {
-        -- LSP,
-        "lua-language-server",
-        -- Formatters
-        "stylua",
-      },
+      ensure_installed = require("languages").get_package_names(),
       run_on_start = true,
     })
 
