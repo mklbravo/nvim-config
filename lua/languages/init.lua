@@ -28,8 +28,8 @@ end
 function languages_config.get_package_names()
   local packages = {}
 
-  for _, luaFile in ipairs(get_language_lua_files()) do
-    local language = require("languages." .. luaFile:gsub("%..+$", ""))
+  for _, lua_file in ipairs(get_language_lua_files()) do
+    local language = load_configuration(lua_file)
 
     if language.lsp ~= nil and language.lsp.id ~= nil then
       table.insert(packages, language.lsp.id)
