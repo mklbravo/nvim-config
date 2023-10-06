@@ -16,6 +16,12 @@ local function get_language_lua_files()
   return lua_files
 end
 
+-- Loads the content of the given file
+-- @param language_filename string
+-- @return any[]
+local function load_configuration(language_file)
+  return require("languages." .. language_file:gsub("%..+$", ""))
+end
 function languages_config.get_package_names()
   local packages = {}
 
