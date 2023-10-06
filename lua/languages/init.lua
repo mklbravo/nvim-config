@@ -45,4 +45,20 @@ function languages_config.get_package_names()
   return packages
 end
 
+-- Returns enabled LSP configurations
+-- @return any[]
+function languages_config.get_lsp_configs()
+  local lsp_configs = {}
+
+  for _, luaFile in ipairs(get_language_lua_files()) do
+    local configuration = load_configuration(luaFile)
+
+    if configuration.lsp ~= nil then
+      table.insert(lsp_configs, configuration.lsp)
+    end
+  end
+
+  return lsp_configs
+end
+
 return languages_config
