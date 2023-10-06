@@ -50,11 +50,11 @@ end
 function languages_config.get_lsp_configs()
   local lsp_configs = {}
 
-  for _, luaFile in ipairs(get_language_lua_files()) do
-    local configuration = load_configuration(luaFile)
+  for _, lua_file in ipairs(get_language_lua_files()) do
+    local language_config = load_configuration(lua_file)
 
-    if configuration.lsp ~= nil then
-      table.insert(lsp_configs, configuration.lsp)
+    if language_config.lsp ~= nil then
+      table.insert(lsp_configs, language_config.lsp)
     end
   end
 
