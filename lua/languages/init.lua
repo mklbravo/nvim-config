@@ -22,6 +22,9 @@ end
 local function load_configuration(language_file)
   return require("languages." .. language_file:gsub("%..+$", ""))
 end
+
+-- Returns required packages for enabled languages
+-- @return any[]
 function languages_config.get_package_names()
   local packages = {}
 
