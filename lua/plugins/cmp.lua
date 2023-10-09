@@ -6,6 +6,8 @@
     * https://github.com/hrsh7th/cmp-buffer   -- nvim-cmp source for buffer words
     * https://github.com/hrsh7th/cmp-nvim-lsp -- nvim-cmp source for neovim builtin LSP client
     * https://github.com/hrsh7th/cmp-path     -- nvim-cmp source for path
+    * https://github.com/hrsh7th/cmp-cmdline  -- nvim-cmp source for cmline
+    * https://github.com/hrsh7th/cmp-vsnip    -- nvim-cmp source for vim-vsnip
 
   Tools:
     * https://github.com/onsails/lspkind.nvim -- vscode-like pictograms for neovim lsp completion items
@@ -13,15 +15,21 @@
 
 return {
   "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
+  event = {
+    "CmdlineEnter",
+    "InsertEnter",
+  },
   dependencies = {
     -- Dependency
     "neovim/nvim-lspconfig",
+    "hrsh7th/vim-vsnip", -- TODO: create configuration file for this plugin
     -- Extensions
     "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "hrsh7th/nvim-cmp",
+    'hrsh7th/cmp-vsnip',
     -- Tools
     "onsails/lspkind-nvim",
   },
@@ -42,6 +50,13 @@ return {
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     })
+
+    opts.snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    }
 
     opts.sources = cmp.config.sources({
       { name = "buffer" },
@@ -64,5 +79,23 @@ return {
     }
 
     cmp.setup(opts)
+
+    -- Use buffer source for `/` and `?`
+    cmp.setup.cmdline({ "/", "?" }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = "buffer" },
+      },
+    })
+
+    -- Use cmdline & path source for `:`
+    cmp.setup.cmdline(":", {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = "path" },
+      }, {
+        { name = "cmdline" },
+      }),
+    })
   end,
 }
