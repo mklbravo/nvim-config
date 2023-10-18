@@ -5,8 +5,9 @@ vim.g.maplocalleader = " "
 -- }}}}
 
 -- Options {{{{
-vim.o.mouse = "a" -- Enable trackpad/mouse selection
+vim.o.cursorline = true -- Highlight the text line of the cursor
 vim.o.fillchars = "eob: " -- Set space as eob(end of buffer) character
+vim.o.mouse = "a" -- Enable trackpad/mouse selection
 vim.o.number = true -- Show line numbers
 vim.o.swapfile = false -- Disable swapfile
 vim.o.termguicolors = true
