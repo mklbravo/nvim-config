@@ -5,9 +5,6 @@
 
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-  },
   keys = function()
     local telescopeBuiltin = require("telescope.builtin")
     return {
