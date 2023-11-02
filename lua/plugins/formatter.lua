@@ -2,21 +2,24 @@
   A format runner for Neovim
   See: https://github.com/mhartington/formatter.nvim
 ]]
+
 return {
   "mhartington/formatter.nvim",
   lazy = false,
-  config = function()
-    local opts = {
-
-      filetype = {
-        lua = {
-          require("formatter.filetypes.lua").stylua,
-        },
-      },
-    }
+  config = function(_, opts)
+    -- local formatter_configs = require("languages").get_formatter_configs()
+    --
+    -- opts.filetype = {}
+    --
+    -- for _, language_formatter_config in ipairs(formatter_configs) do
+    --   table.insert(opts.filetype, language_formatter_config)
+    -- end
 
     require("formatter").setup(opts)
   end,
+  opts = {
+
+  },
   keys = function()
     vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = ":FormatWrite<CR>" })
 

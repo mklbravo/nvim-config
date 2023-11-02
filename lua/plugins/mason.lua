@@ -14,7 +14,7 @@ return {
     require("mason").setup(opts)
 
     require("mason-tool-installer").setup({
-      ensure_installed = require("languages").get_package_names(),
+      ensure_installed = require("languages").get_required_packages(),
       run_on_start = true,
     })
 

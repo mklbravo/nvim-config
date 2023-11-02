@@ -1,0 +1,9 @@
+return {
+  language_code = "lua",
+  lsp = {
+    package = "lua_ls",
+  },
+  formatter = {
+    package = "stylua",
+  },
+}

@@ -1,6 +1,7 @@
 --[[
   Provides configuration for all configured languages
 ]]
+
 local languages_config = {}
 
 local CONFIGURATION_FILE_PATH = vim.fn.stdpath("config") .. "/lua/languages"
@@ -25,18 +26,18 @@ end
 
 -- Returns required packages for enabled languages
 -- @return any[]
-function languages_config.get_package_names()
+function languages_config.get_required_packages()
   local packages = {}
 
   for _, lua_file in ipairs(get_language_lua_files()) do
     local language = load_configuration(lua_file)
 
-    if language.lsp ~= nil and language.lsp.id ~= nil then
-      table.insert(packages, language.lsp.id)
+    if language.lsp ~= nil and language.lsp.package ~= nil then
+      table.insert(packages, language.lsp.package)
     end
 
-    if language.formatter ~= nil and language.formatter.id ~= nil then
-      table.insert(packages, language.formatter.id)
+    if language.formatter ~= nil and language.formatter.package ~= nil then
+      table.insert(packages, language.formatter.package)
     end
   end
 
