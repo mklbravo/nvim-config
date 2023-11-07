@@ -26,4 +26,10 @@ vim.o.smartindent = true -- Do smart autoindenting when starting a new line.
 vim.o.tabstop = 2 -- Number of spaces that a <Tab> counts for
 -- }}}
 
+-- Neovide specific settings {{{
+if vim.g.neovide then
+  vim.o.guifont = "FiraCode Nerd Font:h12"
+end
+-- }}}
+
 -- }}}}
