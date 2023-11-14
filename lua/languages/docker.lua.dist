@@ -1,6 +1,6 @@
 
 return {
-  language_code = "dockerfile",
+  filetype = "dockerfile",
   lsp = {
     package = "dockerls",
     opts = {},

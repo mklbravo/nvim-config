@@ -11,15 +11,13 @@ return {
 
     opts.filetype = {}
 
-    for language, language_formatter_config in pairs(formatter_configs) do
-      opts.filetype[language] = language_formatter_config
+    for filetype, language_formatter_config in pairs(formatter_configs) do
+      opts.filetype[filetype] = language_formatter_config
     end
 
     require("formatter").setup(opts)
   end,
-  opts = {
-
-  },
+  opts = {},
   keys = function()
     vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = "FormatWrite" })
 

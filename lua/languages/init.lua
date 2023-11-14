@@ -71,7 +71,7 @@ function languages_config.get_formatter_configs()
     local language_config = load_configuration(lua_file)
 
     if language_config.formatter ~= nil then
-      formatter_configs[language_config.language_code] = language_config.formatter.opts
+      formatter_configs[language_config.filetype] = language_config.formatter.opts
     end
   end
 

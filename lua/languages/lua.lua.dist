@@ -1,6 +1,6 @@
 
 return {
-  language_code = "lua",
+  filetype = "lua",
   lsp = {
     package = "lua_ls",
     opts = {},
