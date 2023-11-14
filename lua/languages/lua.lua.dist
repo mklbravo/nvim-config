@@ -1,9 +1,27 @@
+
 return {
   language_code = "lua",
   lsp = {
     package = "lua_ls",
+    opts = {},
   },
   formatter = {
     package = "stylua",
+    -- https://github.com/mhartington/formatter.nvim/blob/91651e6afaf6f73b0ffb8b433c06cd4e06f90403/lua/formatter/filetypes/lua.lua#L27-L39
+    opts = function()
+      local current_buffer_file_path = vim.api.nvim_buf_get_name(0)
+
+      return {
+        exe = "stylua",
+        args = {
+          "--search-parent-directories",
+          "--stdin-filepath",
+          vim.fn.shellescape(current_buffer_file_path, true),
+          "--",
+          "-",
+        },
+        stdin = true,
+      }
+    end,
   },
 }
