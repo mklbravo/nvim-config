@@ -21,7 +21,7 @@ return {
 
   },
   keys = function()
-    vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = ":FormatWrite<CR>" })
+    vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = "FormatWrite" })
 
     return {
       { "<leader>F", ":FormatWrite<CR>", mode = "n", desc = "Format document", silent = true },
