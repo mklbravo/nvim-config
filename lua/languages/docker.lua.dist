@@ -1,0 +1,8 @@
+
+return {
+  language_code = "dockerfile",
+  lsp = {
+    package = "dockerls",
+    opts = {},
+  },
+}
