@@ -55,11 +55,27 @@ function languages_config.get_lsp_configs()
     local language_config = load_configuration(lua_file)
 
     if language_config.lsp ~= nil then
-      table.insert(lsp_configs, language_config.lsp)
+      lsp_configs[language_config.lsp.package] = language_config.lsp.opts
     end
   end
 
   return lsp_configs
+end
+
+-- Returns enabled formatter configurations
+-- @return any[]
+function languages_config.get_formatter_configs()
+  local formatter_configs = {}
+
+  for _, lua_file in ipairs(get_language_lua_files()) do
+    local language_config = load_configuration(lua_file)
+
+    if language_config.formatter ~= nil then
+      formatter_configs[language_config.language_code] = language_config.formatter.opts
+    end
+  end
+
+  return formatter_configs
 end
 
 return languages_config

@@ -7,13 +7,13 @@ return {
   "mhartington/formatter.nvim",
   lazy = false,
   config = function(_, opts)
-    -- local formatter_configs = require("languages").get_formatter_configs()
-    --
-    -- opts.filetype = {}
-    --
-    -- for _, language_formatter_config in ipairs(formatter_configs) do
-    --   table.insert(opts.filetype, language_formatter_config)
-    -- end
+    local formatter_configs = require("languages").get_formatter_configs()
+
+    opts.filetype = {}
+
+    for language, language_formatter_config in pairs(formatter_configs) do
+      opts.filetype[language] = language_formatter_config
+    end
 
     require("formatter").setup(opts)
   end,
