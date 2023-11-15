@@ -1,0 +1,36 @@
+return {
+  filetype = "php",
+  lsp = {
+    package = "intelephense",
+    opts = {
+      init_options = {
+        licenceKey = "<ENTER_YOUR_KEY>",
+      },
+    },
+  },
+  formatter = { -- https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/defaults/php_cs_fixer.lua
+    package = "php-cs-fixer",
+    opts = {
+      {
+        exe = "php-cs-fixer",
+        args = {
+          "fix",
+        },
+        stdin = false,
+        ignore_exitcode = true,
+      },
+    },
+  },
+  linter = { -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/psalm.lua
+    package = "psalm",
+    opts = {
+      args = {
+        "--config=psalm-static-code-analysis.xml",
+        "--no-cache",
+        "--output-format=json",
+        "--show-info=true",
+        "--threads=4",
+      },
+    },
+  },
+}
