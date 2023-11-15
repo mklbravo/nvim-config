@@ -39,6 +39,10 @@ function languages_config.get_required_packages()
     if language.formatter ~= nil and language.formatter.package ~= nil then
       table.insert(packages, language.formatter.package)
     end
+
+    if language.linter ~= nil and language.linter.package ~= nil then
+      table.insert(packages, language.linter.package)
+    end
   end
 
   -- TODO: Check unique values
@@ -76,6 +80,27 @@ function languages_config.get_formatter_configs()
   end
 
   return formatter_configs
+end
+
+-- Returns enabled linter configurations
+-- @return any[]
+function languages_config.get_linter_configs()
+  local linter_configs = {}
+
+  for _, lua_file in ipairs(get_language_lua_files()) do
+    local language_config = load_configuration(lua_file)
+
+    if language_config.linter ~= nil then
+      local opts = language_config.linter.opts or {}
+
+      linter_configs[language_config.filetype] = {
+        linter = language_config.linter.package,
+        opts = opts,
+      }
+    end
+  end
+
+  return linter_configs
 end
 
 return languages_config
