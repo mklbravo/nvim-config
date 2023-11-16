@@ -1,0 +1,7 @@
+return {
+  filetype = "yaml",
+  linter = {
+    package = "yamllint",
+    opts = {},
+  },
+}
