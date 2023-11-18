@@ -11,8 +11,8 @@ return {
       { "<C-p>", telescopeBuiltin.git_files, mode = "n", desc = "Find files (git)" },
       { "<leader>pb", telescopeBuiltin.buffers, mode = "n", desc = "[Telescope] Find open buffers" },
       { "<leader>pf", telescopeBuiltin.find_files, mode = "n", desc = "[Telescope] Find files (root)" },
-      { "<leader>ps", telescopeBuiltin.live_grep, mode = "n", desc = "[Telescope] Find IN Files" },
-      { "<leader>pr", telescopeBuiltin.oldfiles, mode = "n", desc = "[Telescope] Old files" },
+      { "<leader>pr", telescopeBuiltin.oldfiles, mode = "n", desc = "[Telescope] Find old files" },
+      { "<leader>ps", telescopeBuiltin.live_grep, mode = "n", desc = "[Telescope] Find in Files" },
     }
   end,
   opts = {
