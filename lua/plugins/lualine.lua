@@ -42,6 +42,7 @@ return {
       -- Section X
       -- ---------
       lualine_x = {
+        "overseer",
         "encoding",
         "fileformat",
       },
