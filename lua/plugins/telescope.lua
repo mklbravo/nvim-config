@@ -5,6 +5,9 @@
 
 return {
   "nvim-telescope/telescope.nvim",
+  dependencies = {
+    "folke/trouble.nvim",
+  },
   keys = function()
     local telescopeBuiltin = require("telescope.builtin")
     return {
@@ -15,12 +18,24 @@ return {
       { "<leader>ps", telescopeBuiltin.live_grep, mode = "n", desc = "[Telescope] Find in Files" },
     }
   end,
-  opts = {
-    defaults = {
-      file_ignore_patterns = {
-        "node_modules",
+  opts = function()
+    local troubleTelescopeProvider = require("trouble.providers.telescope")
+
+    return {
+      defaults = {
+        file_ignore_patterns = {
+          "node_modules",
+        },
+        mappings = {
+          i = {
+            ["<C-t>"] = troubleTelescopeProvider.open_with_trouble,
+          },
+          n = {
+            ["<C-t>"] = troubleTelescopeProvider.open_with_trouble,
+          },
+        },
       },
-    },
-  },
+    }
+  end,
   tag = "0.1.4",
 }
