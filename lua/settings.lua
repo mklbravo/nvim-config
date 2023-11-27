@@ -29,6 +29,7 @@ vim.o.tabstop = 2 -- Number of spaces that a <Tab> counts for
 -- Neovide specific settings {{{
 if vim.g.neovide then
   vim.o.guifont = "MonaspiceKr NFM:11,FiraCode Nerd Font:h12"
+  vim.g.neovide_cursor_vfx_mode = "sonicboom"
 end
 -- }}}
 
