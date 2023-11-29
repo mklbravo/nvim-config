@@ -14,7 +14,9 @@ return {
   config = function()
     require("neotest").setup({
       adapters = {
-        require("neotest-phpunit"),
+        require("neotest-phpunit")({
+          root_files = { "composer.json" },
+        }),
       },
     })
   end,
