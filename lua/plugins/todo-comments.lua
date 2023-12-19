@@ -14,7 +14,9 @@ return {
   keys = {
     {
       "<leader>xt",
-      ":TodoTrouble<CR>",
+      function()
+        vim.api.nvim_command("TodoTrouble cwd=" .. vim.fn.expand("%"))
+      end,
       mode = "n",
       desc = "[Trouble] Open file TODO list",
       silent = true,
