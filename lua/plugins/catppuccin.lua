@@ -16,6 +16,7 @@ return {
         enabled = true,
       },
     },
+    term_colors = true,
   },
   lazy = false,
   name = "catppuccin",
