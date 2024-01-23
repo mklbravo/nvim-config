@@ -36,6 +36,12 @@ return {
           },
         },
       },
+      pickers = {
+        buffers = {
+          ignore_current_buffer = true,
+          sort_mru = true,
+        },
+      },
     }
   end,
   tag = "0.1.4",
