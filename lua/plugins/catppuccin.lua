@@ -9,6 +9,8 @@ return {
   end,
   opts = {
     integrations = {
+      dap = true,
+      dap_ui = true,
       gitsigns = true,
       neotree = true,
       notify = true,
