@@ -32,8 +32,8 @@ function languages_config.get_required_packages()
   for _, lua_file in ipairs(get_language_lua_files()) do
     local language = load_configuration(lua_file)
 
-    if language.lsp ~= nil and language.lsp.package ~= nil then
-      table.insert(packages, language.lsp.package)
+    if language.dap ~= nil and language.dap.package ~= nil then
+      table.insert(packages, language.dap.package)
     end
 
     if language.formatter ~= nil and language.formatter.package ~= nil then
@@ -43,11 +43,31 @@ function languages_config.get_required_packages()
     if language.linter ~= nil and language.linter.package ~= nil then
       table.insert(packages, language.linter.package)
     end
+
+    if language.lsp ~= nil and language.lsp.package ~= nil then
+      table.insert(packages, language.lsp.package)
+    end
   end
 
   -- TODO: Check unique values
   -- TODO: find better way of getting ids from different types (lsp,formatter, etc)
   return packages
+end
+
+-- Returns enabled dap configurations
+-- @return any[]
+function languages_config.get_dap_configs()
+  local dap_configs = {}
+
+  for _, lua_file in ipairs(get_language_lua_files()) do
+    local language_config = load_configuration(lua_file)
+
+    if language_config.dap ~= nil then
+      dap_configs[language_config.filetype] = language_config.dap.opts
+    end
+  end
+
+  return dap_configs
 end
 
 -- Returns enabled LSP configurations

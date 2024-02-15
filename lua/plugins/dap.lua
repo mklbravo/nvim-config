@@ -11,11 +11,22 @@ return {
     sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" })
     sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = "" })
     sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+
+    local dap = require("dap")
+    local language_dap_configs = require("languages").get_dap_configs()
+
+    for language, config in pairs(language_dap_configs) do
+      dap.adapters[language] = config.adapter
+      dap.configurations[language] = { config.configuration }
+    end
+
   end,
   keys = function()
     local dap = require("dap")
     return {
-      { "<leader>db", dap.toggle_breakpoint, mode = "n", desc = "toggle breakpoint", silent = true },
+      { "<leader>db", dap.toggle_breakpoint, mode = "n", desc = "Toggle breakpoint", silent = true },
+      { "<leader>dc", dap.continue, mode = "n", desc = "[Debuging..] Continue", silent = true },
+      { "<leader>dt", dap.terminate, mode = "n", desc = "Terminate debug adapter", silent = true },
       -- Generated code
       -- { "<leader>dc", dap.continue(), mode="n", desc="continue" },
       -- { "<leader>dd", dap.step_over(), mode="n", desc="step over" },
