@@ -19,7 +19,6 @@ return {
       dap.adapters[language] = config.adapter
       dap.configurations[language] = { config.configuration }
     end
-
   end,
   keys = function()
     local dap = require("dap")

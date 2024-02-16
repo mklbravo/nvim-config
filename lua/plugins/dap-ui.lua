@@ -31,7 +31,6 @@ return {
       dapui.close()
     end
     -- TODO: end
-
   end,
   keys = function()
     local dapui = require("dapui")
