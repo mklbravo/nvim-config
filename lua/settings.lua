@@ -34,3 +34,7 @@ end
 -- }}}
 
 -- }}}}
+
+-- Command for neovide remote {{{
+vim.cmd("command! -nargs=0 SetRemoteConfig set guifont=MonaspiceAr\\ Nerd\\ Font\\ Mono:h12")
+-- }}}
