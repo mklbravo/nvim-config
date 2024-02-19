@@ -22,7 +22,7 @@ return {
       silent = true,
     },
     {
-      "<leader>pt",
+      "<leader>pj",
       ":TodoTelescope<CR>",
       mode = "n",
       desc = "[Telescope] Find in TODO list",
