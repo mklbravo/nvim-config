@@ -29,15 +29,14 @@ return {
       },
     },
   },
-  linter = { -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/psalm.lua
-    package = "psalm",
+  linter = { -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/phpstan.lua
+    package = "phpstan",
     opts = {
       args = {
-        "--config=psalm-static-code-analysis.xml",
-        "--no-cache",
-        "--output-format=json",
-        "--show-info=true",
-        "--threads=4",
+        'analyze',
+        '--error-format=json',
+        '--memory-limit=2G',
+        '--no-progress',
       },
     },
   },
