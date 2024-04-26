@@ -6,4 +6,8 @@ return {
       return require("formatter.filetypes.sh").shfmt()
     end,
   },
+  linter = {
+    package = "shellcheck",
+    opts = {},
+  }
 }
