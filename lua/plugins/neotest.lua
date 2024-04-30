@@ -15,6 +15,9 @@ return {
     require("neotest").setup({
       adapters = {
         require("neotest-phpunit")({
+          env = {
+            XDEBUG_MODE = "off",
+          },
           root_files = { "composer.json" },
         }),
       },
