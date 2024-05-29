@@ -14,8 +14,10 @@ return {
   config = function()
     require("neotest").setup({
       adapters = {
+        -- Move this to language specific config
         require("neotest-phpunit")({
           env = {
+            APP_ENV = "test",
             XDEBUG_MODE = "off",
           },
           root_files = { "composer.json" },
