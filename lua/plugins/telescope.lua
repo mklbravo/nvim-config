@@ -20,7 +20,7 @@ return {
     }
   end,
   opts = function()
-    local troubleTelescopeProvider = require("trouble.providers.telescope")
+    local troubleTelescopeSource = require("trouble.sources.telescope")
 
     return {
       defaults = {
@@ -29,10 +29,10 @@ return {
         },
         mappings = {
           i = {
-            ["<C-t>"] = troubleTelescopeProvider.open_with_trouble,
+            ["<C-t>"] = troubleTelescopeSource.open,
           },
           n = {
-            ["<C-t>"] = troubleTelescopeProvider.open_with_trouble,
+            ["<C-t>"] = troubleTelescopeSource.open,
           },
         },
       },
