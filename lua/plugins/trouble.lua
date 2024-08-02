@@ -9,34 +9,30 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
+    modes = {
+      buffer_diagnostics = {
+        mode = "diagnostics",
+        filter = { buf = 0 },
+      },
+    },
   },
   keys = function()
     local trouble = require("trouble")
 
+    local a = 1
     return {
-      {
-        "<leader>xx",
-        function()
-          trouble.toggle()
-        end,
-        mode = "n",
-        desc = "[Trouble] Toggle panel",
-      },
       {
         "<leader>xw",
         function()
-          trouble.toggle("workspace_diagnostics")
+          trouble.focus("diagnostics")
         end,
         mode = "n",
         desc = "[Trouble] Toggle workspace diagnostics",
       },
       {
-        "<leader>xd",
+        "<leader>xb",
         function()
-          trouble.toggle("document_diagnostics")
+          trouble.focus("buffer_diagnostics")
         end,
         mode = "n",
         desc = "[Trouble] Toggle document diagnostics",
