@@ -9,19 +9,21 @@ return {
   config = function(_, opts)
     local which_key = require("which-key")
     which_key.setup(opts)
-    which_key.register(opts.defaults)
+    which_key.add(opts.spec)
   end,
   init = function()
     vim.o.timeout = true
     vim.o.timeoutlen = 300
   end,
   opts = {
-    defaults = {
-      mode = { "n", "v" },
-      ["<leader>b"] = { name = "+buffer" },
-      ["<leader>e"] = { name = "+explorer" },
-      ["<leader>p"] = { name = "+project" },
-      ["<leader>x"] = { name = "+trouble" },
+    spec = {
+      { "<leader>b", group = "Buffer" },
+      { "<leader>d", group = "Debug" },
+      { "<leader>e", group = "Explorer" },
+      { "<leader>p", group = "Project" },
+      { "<leader>t", group = "Testing" },
+      { "<leader>x", group = "Trouble" },
     },
+    defaults = {},
   },
 }
