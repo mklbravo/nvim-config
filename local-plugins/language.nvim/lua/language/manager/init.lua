@@ -14,10 +14,10 @@ local function install_package(package_name)
   package:install()
 end
 
-local function configure_formatter(language, config)
+local function configure_formatter(filetype, config)
   install_package(config.package)
 
-  formatter_plugin_config.values.filetype[language] = { config.opts }
+  formatter_plugin_config.values.filetype[filetype] = { config.opts }
 end
 
 local function configure_lsp(config)
