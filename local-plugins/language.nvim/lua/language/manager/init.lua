@@ -2,6 +2,7 @@ local M = {}
 
 -- External Plugins
 local formatter_plugin_config = require("formatter.config")
+local linter_plugin_config = require("lint")
 local lsp_plugin_config = require("lspconfig")
 -- Mason
 local mason_lspconfig = require("mason-lspconfig")
@@ -12,6 +13,16 @@ local plugin_config = require("language.config")
 local function install_package(package_name)
   local package = mason_registry.get_package(package_name)
   package:install()
+end
+
+local function configure_linter(filetype, config)
+  install_package(config.package)
+
+  linter_plugin_config.linters_by_ft[filetype] = { config.package }
+
+  for option, value in pairs(config.opts) do
+    linter_plugin_config.linters[config.package][option] = value
+  end
 end
 
 local function configure_formatter(filetype, config)
@@ -33,6 +44,12 @@ function M.apply_language_configuration(language)
   print("Applying language configuration for " .. language)
 
   local spec = plugin_config.get_language_spec(language)
+
+  local linter_config = spec.linter
+
+  if linter_config ~= nil then
+    configure_linter(spec.filetype, linter_config)
+  end
 
   local lsp_config = spec.lsp
   if lsp_config ~= nil then
