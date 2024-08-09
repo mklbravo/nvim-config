@@ -85,4 +85,8 @@ function M.is_language_enabled(language)
   return vim.tbl_contains(enabled_languages, language)
 end
 
+function M.get_language_spec(language)
+  return require("language.config.spec." .. language)
+end
+
 return M
