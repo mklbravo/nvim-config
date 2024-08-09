@@ -1,5 +1,4 @@
 --[[
 ]]
 
-require 'config/lazygit'
-
+require("config/lazygit")
