@@ -1,6 +1,7 @@
 local M = {}
 
 -- External Plugins
+local dap_plugin_config = require("dap")
 local formatter_plugin_config = require("formatter.config")
 local linter_plugin_config = require("lint")
 local lsp_plugin_config = require("lspconfig")
@@ -13,6 +14,13 @@ local plugin_config = require("language.config")
 local function install_package(package_name)
   local package = mason_registry.get_package(package_name)
   package:install()
+end
+
+local function configure_dap(filetype, config)
+  install_package(config.package)
+
+  dap_plugin_config.adapters[filetype] = config.adapter
+  dap_plugin_config.configurations[filetype] = { config.configuration }
 end
 
 local function configure_linter(filetype, config)
@@ -41,12 +49,14 @@ local function configure_lsp(config)
 end
 
 function M.apply_language_configuration(language)
-  print("Applying language configuration for " .. language)
-
   local spec = plugin_config.get_language_spec(language)
 
-  local linter_config = spec.linter
+  local dap_config = spec.dap
+  if dap_config ~= nil then
+    configure_dap(spec.filetype, dap_config)
+  end
 
+  local linter_config = spec.linter
   if linter_config ~= nil then
     configure_linter(spec.filetype, linter_config)
   end
