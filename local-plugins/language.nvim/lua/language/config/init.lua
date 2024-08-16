@@ -54,7 +54,6 @@ function M.get_enabled_languages()
   return stored_data
 end
 
--- TODO: Rename function
 function M.enable_language(language)
   local enabled_languages = M.get_enabled_languages()
   if not vim.tbl_contains(enabled_languages, language) then
@@ -64,7 +63,6 @@ function M.enable_language(language)
   end
 end
 
--- TODO: Rename function
 function M.disable_language(language)
   local enabled_languages = M.get_enabled_languages()
 
