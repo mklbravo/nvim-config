@@ -5,14 +5,7 @@
 
 return {
   "neovim/nvim-lspconfig",
-  config = function()
-    local lsp_config_plugin = require("lspconfig")
-    local language_lsp_configs = require("languages").get_lsp_configs()
-
-    for lsp_package, lsp_opts in pairs(language_lsp_configs) do
-      lsp_config_plugin[lsp_package].setup(lsp_opts)
-    end
-  end,
+  config = function() end,
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
