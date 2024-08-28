@@ -1,0 +1,43 @@
+# https://docs.github.com/en/actions
+
+name: "Create Release"
+
+# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows
+on:
+  push:
+    tags:
+      - "**"
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: "ubuntu-latest"
+
+    steps:
+
+    - name: "Create release"
+      # https://github.com/marketplace/actions/github-script
+      uses: "actions/github-script@v6"
+      with:
+        # https://octokit.github.io/rest.js/v21/#repos-create-release
+        script: |
+          const tag = context.ref.replace('refs/tags/', '');
+
+          try {
+            const response = await github.rest.repos.createRelease({
+              draft: false,
+              generate_release_notes: true,
+              name: tag,
+              owner: context.repo.owner,
+              prerelease: false,
+              repo: context.repo.repo,
+              tag_name: tag,
+            });
+
+            core.info(`Created release ${response.data.name} with tag ${response.data.tag_name}`);
+
+          } catch (error) {
+            core.setFailed(error.message);
+          }
+
+
