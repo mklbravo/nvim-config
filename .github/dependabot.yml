@@ -5,8 +5,6 @@ updates:
     directory: "/"
     commit-message:
       prefix: "chore(github-actions-deps): "
-    commit-body:
-      prefix: "- "
     labels:
       - "dependency"
     schedule:
