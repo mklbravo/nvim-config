@@ -1,0 +1,15 @@
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    commit-message:
+      include: "scope"
+      prefix: "chore"
+    commit-body:
+      prefix: "- "
+    labels:
+      - "dependency"
+    schedule:
+      interval: "daily"
+
