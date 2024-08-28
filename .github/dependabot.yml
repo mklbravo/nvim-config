@@ -4,8 +4,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     commit-message:
-      include: "scope"
-      prefix: "chore"
+      prefix: "chore(github-actions-deps): "
     commit-body:
       prefix: "- "
     labels:
