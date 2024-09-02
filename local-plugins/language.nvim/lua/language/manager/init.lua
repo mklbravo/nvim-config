@@ -28,7 +28,9 @@ local function configure_linter(filetype, config)
 
   linter_plugin_config.linters_by_ft[filetype] = { config.package }
 
-  for option, value in pairs(config.opts) do
+  local linterOptions = config.opts or {}
+
+  for option, value in pairs(linterOptions) do
     linter_plugin_config.linters[config.package][option] = value
   end
 end
