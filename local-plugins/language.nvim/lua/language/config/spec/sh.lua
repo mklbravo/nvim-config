@@ -9,5 +9,5 @@ return {
   linter = {
     package = "shellcheck",
     opts = {},
-  }
+  },
 }
