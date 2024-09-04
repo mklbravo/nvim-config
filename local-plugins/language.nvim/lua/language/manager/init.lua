@@ -26,7 +26,11 @@ end
 local function configure_linter(filetype, config)
   install_package(config.package)
 
-  linter_plugin_config.linters_by_ft[filetype] = { config.package }
+  local filetype_linters = linter_plugin_config.linters_by_ft[filetype] or {}
+
+  table.insert(filetype_linters, config.package)
+
+  linter_plugin_config.linters_by_ft[filetype] = filetype_linters
 
   local linterOptions = config.opts or {}
 
