@@ -5,6 +5,5 @@ return {
   },
   lsp = {
     package = "dockerls",
-    opts = {},
   },
 }
