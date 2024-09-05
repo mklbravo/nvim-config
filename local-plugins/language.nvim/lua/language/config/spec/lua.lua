@@ -2,7 +2,6 @@ return {
   filetype = "lua",
   lsp = {
     package = "lua_ls",
-    opts = {},
   },
   formatter = {
     package = "stylua",

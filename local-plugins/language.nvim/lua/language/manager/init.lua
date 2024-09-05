@@ -51,7 +51,9 @@ local function configure_lsp(config)
   local mason_package = mason_lspconfig.get_mappings().lspconfig_to_mason[config.package]
   install_package(mason_package)
 
-  lsp_plugin_config[config.package].setup(config.opts)
+  local lsp_options = config.opts or {}
+
+  lsp_plugin_config[config.package].setup(lsp_options)
 end
 
 function M.apply_language_configuration(language)

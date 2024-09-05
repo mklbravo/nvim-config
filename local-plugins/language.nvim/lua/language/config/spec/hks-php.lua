@@ -40,6 +40,5 @@ return {
   },
   lsp = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#intelephense
     package = "intelephense",
-    opts = {},
   },
 }

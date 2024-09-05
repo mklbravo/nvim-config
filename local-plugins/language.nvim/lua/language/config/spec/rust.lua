@@ -2,7 +2,6 @@ return {
   filetype = "rust",
   lsp = {
     package = "rust_analyzer",
-    opts = {},
   },
   formatter = {
     --[[
