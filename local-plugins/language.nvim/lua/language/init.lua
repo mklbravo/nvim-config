@@ -7,8 +7,9 @@ function M.setup()
     manager.apply_language_configuration(language)
   end
 
-  vim.api.nvim_create_user_command("LanguageUI", "lua require('language.ui').open()", { nargs = 0 })
+  -- Register the commands
   require("language.command.language_enable").register()
+  require("language.command.language_ui").register()
 end
 
 return M
