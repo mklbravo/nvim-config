@@ -8,6 +8,7 @@ function M.setup()
   end
 
   vim.api.nvim_create_user_command("LanguageUI", "lua require('language.ui').open()", { nargs = 0 })
+  require("language.command.language_enable").register()
 end
 
 return M
