@@ -6,26 +6,51 @@ local formatter_plugin_config = require("formatter.config")
 local linter_plugin_config = require("lint")
 local lsp_plugin_config = require("lspconfig")
 -- Mason
-local mason_lspconfig = require("mason-lspconfig")
 local mason_registry = require("mason-registry")
 -- Language Plugin
 local plugin_config = require("language.config")
 
 local function install_package(package_name)
+  -- DOCU: https://github.com/williamboman/mason.nvim/blob/main/doc/reference.md#package
   local package = mason_registry.get_package(package_name)
-  package:install()
+
+  if package == nil then
+    print(string.format("Package `%s` not found in the registry.", package_name))
+    return
+  end
+
+  if not package:is_installed() then
+    package:once(
+      "install:failed",
+      vim.schedule_wrap(function()
+        print(string.format("Failed to install package: `%s`", package_name))
+      end)
+    )
+
+    package:once(
+      "install:success",
+      vim.schedule_wrap(function()
+        print(string.format("Successfuly installed package: `%s`", package_name))
+      end)
+    )
+
+    -- DOCU: https://github.com/williamboman/mason.nvim/blob/main/doc/reference.md#package
+    local install_handle = package:install()
+
+    print(string.format("Installing package `%s`", package_name))
+
+    vim.wait(10000, function()
+      return install_handle:is_closed()
+    end, 1)
+  end
 end
 
 local function configure_dap(filetype, config)
-  install_package(config.package)
-
   dap_plugin_config.adapters[filetype] = config.adapter
   dap_plugin_config.configurations[filetype] = { config.configuration }
 end
 
 local function configure_linter(filetype, config)
-  install_package(config.package)
-
   local filetype_linters = linter_plugin_config.linters_by_ft[filetype] or {}
 
   table.insert(filetype_linters, config.package)
@@ -40,17 +65,10 @@ local function configure_linter(filetype, config)
 end
 
 local function configure_formatter(filetype, config)
-  install_package(config.package)
-
   formatter_plugin_config.values.filetype[filetype] = { config.opts }
 end
 
 local function configure_lsp(config)
-  -- Mason package differs from lspconfig package.
-  -- I need to get the mason package name from the lspconfig package name.
-  local mason_package = mason_lspconfig.get_mappings().lspconfig_to_mason[config.package]
-  install_package(mason_package)
-
   local lsp_options = config.opts or {}
 
   lsp_plugin_config[config.package].setup(lsp_options)
@@ -77,6 +95,14 @@ function M.apply_language_configuration(language)
   local formatter_config = spec.formatter
   if formatter_config ~= nil then
     configure_formatter(spec.filetype, formatter_config)
+  end
+end
+
+function M.install_language_packages(language)
+  local required_package_names = plugin_config.get_language_required_mason_package_names(language)
+
+  for _, package_name in ipairs(required_package_names) do
+    install_package(package_name)
   end
 end
 
