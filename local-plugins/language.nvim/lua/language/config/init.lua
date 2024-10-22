@@ -87,4 +87,35 @@ function M.get_language_spec(language)
   return require("language.config.spec." .. language)
 end
 
+function M.get_language_required_mason_package_names(language)
+  local spec = M.get_language_spec(language)
+
+  local required_packages = {}
+
+  local dap_config = spec.dap
+  if dap_config ~= nil then
+    table.insert(required_packages, dap_config.package)
+  end
+
+  local linter_config = spec.linter
+  if linter_config ~= nil then
+    table.insert(required_packages, linter_config.package)
+  end
+
+  local lsp_config = spec.lsp
+  if lsp_config ~= nil then
+    -- Mason package differs from lspconfig package.
+    -- I need to get the mason package name from the lspconfig package name.
+    local mason_package_name = require("mason-lspconfig").get_mappings().lspconfig_to_mason[lsp_config.package]
+    table.insert(required_packages, mason_package_name)
+  end
+
+  local formatter_config = spec.formatter
+  if formatter_config ~= nil then
+    table.insert(required_packages, formatter_config.package)
+  end
+
+  return required_packages
+end
+
 return M

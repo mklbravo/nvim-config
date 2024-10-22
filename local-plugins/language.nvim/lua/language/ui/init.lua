@@ -75,6 +75,7 @@ function M.toggle_select()
   if config.is_language_enabled(selected_language) then
     config.disable_language(selected_language)
   else
+    manager.install_language_packages(selected_language)
     config.enable_language(selected_language)
     -- TODO: Test This
     -- manager.apply_language_configuration(selected_language)

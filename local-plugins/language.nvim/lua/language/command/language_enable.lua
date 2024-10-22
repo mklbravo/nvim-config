@@ -1,6 +1,7 @@
 local M = {}
 
 local config = require("language.config")
+local manager = require("language.manager")
 local supported_languages = config.get_available_languages()
 
 -- Autocomplete function for the command
@@ -27,8 +28,14 @@ function M.register()
         return
       end
 
-      print("Language enabled: '" .. language .. "'. Please restart Neovim to apply the changes.")
-      config.enable_language(language)
+      if not config.is_language_enabled(language) then
+        print("Required packages will be installed:")
+        manager.install_language_packages(language)
+        config.enable_language(language)
+        print(string.format("Language enabled: '%s'. Please restart Neovim to apply change.", language))
+      else
+        print(string.format("Language already enabled: '%s'", language))
+      end
     end
   end, {
     nargs = "+",
