@@ -16,16 +16,7 @@ return {
   },
   formatter = { -- https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/defaults/php_cs_fixer.lua
     package = "php-cs-fixer",
-    opts = {
-      {
-        exe = "php-cs-fixer",
-        args = {
-          "fix",
-        },
-        stdin = false,
-        ignore_exitcode = true,
-      },
-    },
+    opts = require("formatter.filetypes.php").php_cs_fixer(),
   },
   linter = { -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/phpstan.lua
     package = "phpstan",
