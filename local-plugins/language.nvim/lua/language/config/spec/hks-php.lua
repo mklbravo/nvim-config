@@ -1,6 +1,7 @@
 return {
   filetype = "php",
-  dap = { -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#php
+  -- See: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#php
+  dap = {
     package = "php-debug-adapter",
     adapter = {
       type = "executable",
@@ -14,11 +15,13 @@ return {
       port = 9003,
     },
   },
-  formatter = { -- https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/defaults/php_cs_fixer.lua
+  -- See: https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/defaults/php_cs_fixer.lua
+  formatter = {
     package = "php-cs-fixer",
     opts = require("formatter.filetypes.php").php_cs_fixer(),
   },
-  linter = { -- https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/phpstan.lua
+  -- See: https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/phpstan.lua
+  linter = {
     package = "phpstan",
     opts = {
       args = {
@@ -29,7 +32,8 @@ return {
       },
     },
   },
-  lsp = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#intelephense
+  -- See: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#intelephense
+  lsp = {
     package = "intelephense",
   },
 }
