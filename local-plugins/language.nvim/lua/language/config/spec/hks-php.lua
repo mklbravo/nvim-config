@@ -18,7 +18,11 @@ return {
   -- See: https://github.com/mhartington/formatter.nvim/blob/master/lua/formatter/defaults/php_cs_fixer.lua
   formatter = {
     package = "php-cs-fixer",
-    opts = require("formatter.filetypes.php").php_cs_fixer(),
+    opts = function()
+      local opts = require("formatter.filetypes.php").php_cs_fixer()
+      table.insert(opts.args, "--allow-risky=yes")
+      return opts
+    end,
   },
   -- See: https://github.com/mfussenegger/nvim-lint/blob/master/lua/lint/linters/phpstan.lua
   linter = {
