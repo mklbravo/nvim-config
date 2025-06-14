@@ -106,7 +106,7 @@ function M.get_language_required_mason_package_names(language)
   if lsp_config ~= nil then
     -- Mason package differs from lspconfig package.
     -- I need to get the mason package name from the lspconfig package name.
-    local mason_package_name = require("mason-lspconfig").get_mappings().lspconfig_to_mason[lsp_config.package]
+    local mason_package_name = require("mason-lspconfig").get_mappings().lspconfig_to_package[lsp_config.package]
     table.insert(required_packages, mason_package_name)
   end
 
