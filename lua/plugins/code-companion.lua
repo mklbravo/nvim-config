@@ -36,6 +36,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/mcphub.nvim",
   },
+  lazy = false,
   keys = {
     {
       "<leader>ac",
