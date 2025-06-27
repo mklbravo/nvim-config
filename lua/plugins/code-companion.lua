@@ -37,9 +37,19 @@ return {
   },
   keys = {
     {
-      "<leader>C",
+      "<leader>ac",
       "<cmd>CodeCompanionChat Toggle<cr>",
-      desc = "Toggle Code Companion Chat",
+      desc = "Toggle CodeCompanion chat",
+    },
+    {
+      "<leader>ai",
+      "<cmd>CodeCompanion<cr>",
+      desc = "Inline CodeCompanion",
+    },
+    {
+      "<leader>aa",
+      "<cmd>CodeCompanionActions<cr>",
+      desc = "Show CodeCompanion actions",
     },
   },
 }
