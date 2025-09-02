@@ -3,11 +3,13 @@ return {
   "olimorris/codecompanion.nvim",
   opts = {
     adapters = {
-      copilot = function()
-        return require("codecompanion.adapters").extend("copilot", {
-          icon = "",
-        })
-      end,
+      http = {
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            icon = "",
+          })
+        end,
+      },
     },
     extensions = {
       mcphub = {
