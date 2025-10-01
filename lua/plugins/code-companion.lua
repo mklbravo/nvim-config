@@ -10,7 +10,7 @@ return {
       http = {
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
-            icon = "",
+            icon = "",
           })
         end,
       },
