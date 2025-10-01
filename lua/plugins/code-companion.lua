@@ -1,6 +1,10 @@
 -- CodeCompanion plugin configuration
 return {
   "olimorris/codecompanion.nvim",
+  init = function()
+    -- Expand 'cc' into 'CodeCompanion' in the command line
+    vim.cmd([[cab cc CodeCompanion]])
+  end,
   opts = {
     adapters = {
       http = {
