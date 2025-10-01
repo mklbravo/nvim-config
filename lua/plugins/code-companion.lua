@@ -1,12 +1,16 @@
 -- CodeCompanion plugin configuration
 return {
   "olimorris/codecompanion.nvim",
+  init = function()
+    -- Expand 'cc' into 'CodeCompanion' in the command line
+    vim.cmd([[cab cc CodeCompanion]])
+  end,
   opts = {
     adapters = {
       http = {
         copilot = function()
           return require("codecompanion.adapters").extend("copilot", {
-            icon = "",
+            icon = "",
           })
         end,
       },
@@ -44,16 +48,33 @@ return {
       "<leader>ac",
       "<cmd>CodeCompanionChat Toggle<cr>",
       desc = "Toggle CodeCompanion chat",
+      mode = { "n", "v" },
+      noremap = true,
+      silent = true,
     },
     {
       "<leader>ai",
       "<cmd>CodeCompanion<cr>",
       desc = "Inline CodeCompanion",
+      mode = { "n", "v" },
+      noremap = true,
+      silent = true,
     },
     {
       "<leader>aa",
       "<cmd>CodeCompanionActions<cr>",
       desc = "Show CodeCompanion actions",
+      mode = { "n", "v" },
+      noremap = true,
+      silent = true,
+    },
+    {
+      "ga",
+      "<cmd>CodeCompanionChat Add<cr>",
+      mode = "v",
+      noremap = true,
+      silent = true,
+      desc = "Add visual selection to CodeCompanion chat",
     },
   },
 }
