@@ -68,5 +68,13 @@ return {
       noremap = true,
       silent = true,
     },
+    {
+      "ga",
+      "<cmd>CodeCompanionChat Add<cr>",
+      mode = "v",
+      noremap = true,
+      silent = true,
+      desc = "Add visual selection to CodeCompanion chat",
+    },
   },
 }
