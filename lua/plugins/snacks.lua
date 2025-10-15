@@ -7,7 +7,9 @@ return {
   "folke/snacks.nvim",
   lazy = false,
   priority = 1000,
-  opts = {},
+  opts = {
+    scroll = { enabled = true },
+  },
   keys = {
     {
       "<leader>bd",
