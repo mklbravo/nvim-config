@@ -14,5 +14,3 @@ local lazySpec = { { import = "plugins" } }
 local lazyConfig = { ui = { border = "rounded" } }
 
 require("lazy").setup(lazySpec, lazyConfig)
-
-require("config")
