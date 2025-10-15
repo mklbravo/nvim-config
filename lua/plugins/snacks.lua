@@ -8,6 +8,7 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
+    lazygit = { enabled = true },
     scroll = { enabled = true },
   },
   keys = {
@@ -31,6 +32,20 @@ return {
         Snacks.bufdelete.other()
       end,
       desc = "Close all buffers except current",
+    },
+    {
+      "<leader>G",
+      function()
+        Snacks.lazygit.open()
+      end,
+      desc = "Open lazygit",
+    },
+    {
+      "<leader>gf",
+      function()
+        Snacks.lazygit.log_file()
+      end,
+      desc = "Open lazygit log for current file",
     },
   },
 }
