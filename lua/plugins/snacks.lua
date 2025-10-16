@@ -46,6 +46,17 @@ local lazygit_keys = {
   },
 }
 
+-- Functions
+local function merge_tables(...)
+  local result = {}
+  for _, tbl in ipairs({ ... }) do
+    for _, value in pairs(tbl) do
+      table.insert(result, value)
+    end
+  end
+  return result
+end
+
 return {
   "folke/snacks.nvim",
   lazy = false,
@@ -54,5 +65,5 @@ return {
     lazygit = { enabled = true },
     scroll = { enabled = true },
   },
-  keys = vim.tbl_extend("force", buffer_keys, lazygit_keys),
+  keys = merge_tables(buffer_keys, lazygit_keys),
 }
