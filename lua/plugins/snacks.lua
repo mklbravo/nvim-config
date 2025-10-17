@@ -9,6 +9,7 @@
 ---@field keys? table
 
 local bufdelete_config = require("plugins.snacks.bufdelete")
+local dashboard_config = require("plugins.snacks.dashboard")
 local lazygit_config = require("plugins.snacks.lazygit")
 local scroll_config = require("plugins.snacks.scroll")
 
@@ -33,6 +34,7 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
+    dashboard = dashboard_config.opts,
     lazygit = lazygit_config.opts,
     scroll = scroll_config.opts,
   },
