@@ -3,50 +3,15 @@
   See: https://github.com/folke/snacks.nvim
 ]]
 ---@diagnostic disable: undefined-global
--- Buffer key mappings
-local buffer_keys = {
-  {
-    "<leader>bd",
-    function()
-      Snacks.bufdelete()
-    end,
-    desc = "Close current buffer",
-  },
-  {
-    "<leader>ba",
-    function()
-      Snacks.bufdelete.all()
-    end,
-    desc = "Close all buffers",
-  },
-  {
-    "<leader>bo",
-    function()
-      Snacks.bufdelete.other()
-    end,
-    desc = "Close all buffers except current",
-  },
-}
 
--- Lazygit key mappings
-local lazygit_keys = {
-  {
-    "<leader>G",
-    function()
-      Snacks.lazygit.open()
-    end,
-    desc = "Open lazygit",
-  },
-  {
-    "<leader>gf",
-    function()
-      Snacks.lazygit.log_file()
-    end,
-    desc = "Open lazygit log for current file",
-  },
-}
+---@class SnacksConfig
+---@field opts? table
+---@field keys? table
 
--- Functions
+local bufdelete_config = require("plugins.snacks.bufdelete")
+local lazygit_config = require("plugins.snacks.lazygit")
+local scroll_config = require("plugins.snacks.scroll")
+
 local function merge_tables(...)
   local result = {}
   for _, tbl in ipairs({ ... }) do
@@ -62,8 +27,8 @@ return {
   lazy = false,
   priority = 1000,
   opts = {
-    lazygit = { enabled = true },
-    scroll = { enabled = true },
+    lazygit = lazygit_config.opts,
+    scroll = scroll_config.opts,
   },
-  keys = merge_tables(buffer_keys, lazygit_keys),
+  keys = merge_tables(bufdelete_config.keys, lazygit_config.keys),
 }
