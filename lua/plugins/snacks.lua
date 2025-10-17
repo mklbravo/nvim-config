@@ -12,6 +12,9 @@ local bufdelete_config = require("plugins.snacks.bufdelete")
 local lazygit_config = require("plugins.snacks.lazygit")
 local scroll_config = require("plugins.snacks.scroll")
 
+-- ------------------------------------------------------------------------
+-- Helper Functions
+-- ------------------------------------------------------------------------
 local function merge_tables(...)
   local result = {}
   for _, tbl in ipairs({ ... }) do
@@ -22,6 +25,9 @@ local function merge_tables(...)
   return result
 end
 
+-- ------------------------------------------------------------------------
+-- Lazy configuration
+-- ------------------------------------------------------------------------
 return {
   "folke/snacks.nvim",
   lazy = false,
