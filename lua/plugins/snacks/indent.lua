@@ -8,4 +8,12 @@
 return {
   opts = {
     enabled = true,
+    indent = {
+      hl = "LineNr",
+    },
+    scope = {
+      enabled = true,
+      hl = "@keyword",
+    },
+  },
 }
