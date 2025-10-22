@@ -4,7 +4,6 @@ local M = {}
 local dap_plugin_config = require("dap")
 local formatter_plugin_config = require("formatter.config")
 local linter_plugin_config = require("lint")
-local lsp_plugin_config = require("lspconfig")
 -- Mason
 local mason_registry = require("mason-registry")
 -- Language Plugin
@@ -71,7 +70,8 @@ end
 local function configure_lsp(config)
   local lsp_options = config.opts or {}
 
-  lsp_plugin_config[config.package].setup(lsp_options)
+  vim.lsp.enable(config.package)
+  vim.lsp.config(config.package, lsp_options)
 end
 
 function M.apply_language_configuration(language)
