@@ -50,8 +50,8 @@ return {
                  3. Ensure the commit message follows the Conventional Commits format: <type>(<scope>): <description>.
                  4. Make sure the description is concise and informative.
                  5. Provide the commit message and description as the output, with  additional explanation if necessary.
-                 6. Stage the changes.
-                 7. Commit the changes with the generated commit message.
+                 6. Stage the relevant changes for this commit.
+                 7. Commit the changes using the generated conventional commit message and description.
 
               ### Tools you can use:
                 - @{cmd_runner}: A tool that allows you to run shell commands. Use this to get the git diff and to stage and commit changes.
