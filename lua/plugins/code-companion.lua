@@ -5,38 +5,44 @@ return {
     -- Expand 'cc' into 'CodeCompanion' in the command line
     vim.cmd([[cab cc CodeCompanion]])
   end,
-  opts = {
-    adapters = {
-      http = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            icon = "",
-          })
-        end,
-      },
-    },
-    extensions = {
-      mcphub = {
-        callback = "mcphub.extensions.codecompanion",
-        opts = {
-          show_result_in_chat = true, -- Show mcp tool results in chat
-          make_vars = true, -- Convert resources to #variables
-          make_slash_commands = true, -- Add prompts as /slash commands
-        },
-      },
-    },
-    strategies = {
-      chat = {
-        roles = {
-          user = " Shōgun",
-          llm = function(adapter)
-            local icon = adapter.icon or ""
-            return string.format(" MAIk: %s %s | %s", icon, adapter.formatted_name, adapter.model.name)
+  opts = function()
+    local promt_commit_changes = require("plugins.code-companion.promt-commit-changes")
+    return {
+      adapters = {
+        http = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              icon = "",
+            })
           end,
         },
       },
-    },
-  },
+      extensions = {
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            show_result_in_chat = true, -- Show mcp tool results in chat
+            make_vars = true, -- Convert resources to #variables
+            make_slash_commands = true, -- Add prompts as /slash commands
+          },
+        },
+      },
+      prompt_library = {
+        [promt_commit_changes.name] = promt_commit_changes.config,
+      },
+      strategies = {
+        chat = {
+          roles = {
+            user = " Shōgun",
+            llm = function(adapter)
+              local icon = adapter.icon or ""
+              return string.format(" MAIk: %s %s | %s", icon, adapter.formatted_name, adapter.model.name)
+            end,
+          },
+        },
+      },
+    }
+  end,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
