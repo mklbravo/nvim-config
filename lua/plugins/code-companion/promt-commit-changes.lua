@@ -1,12 +1,15 @@
 --[[
-  Promt to generate conventional commit messages based on git diff
+  This prompt is designed to help an AI assistant generate Conventional Commit messages
+  based on the changes made in a git repository. The assistant will analyze the git diff
+  and status, read relevant files for context, and create appropriate commit messages
+  following the Conventional Commits specification.
 ]]
 
 return {
   name = "Commit Changes",
   config = {
     strategy = "chat",
-    description = "Test promt on CdeCompanion chat",
+    description = "Analyze git changes and commit them with Conventional Commit messages",
     opts = {
       auto_submit = true,
     },
