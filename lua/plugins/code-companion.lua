@@ -6,7 +6,8 @@ return {
     vim.cmd([[cab cc CodeCompanion]])
   end,
   opts = function()
-    local promt_commit_changes = require("plugins.code-companion.promt-commit-changes")
+    local prompt_commit_changes = require("plugins.code-companion.prompt-commit-changes")
+    local prompt_code_review = require("plugins.code-companion.prompt-code-review")
     return {
       adapters = {
         http = {
@@ -28,7 +29,8 @@ return {
         },
       },
       prompt_library = {
-        [promt_commit_changes.name] = promt_commit_changes.config,
+        [prompt_commit_changes.name] = prompt_commit_changes.config,
+        [prompt_code_review.name] = prompt_code_review.config,
       },
       strategies = {
         chat = {
