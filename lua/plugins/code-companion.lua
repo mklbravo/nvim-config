@@ -18,6 +18,14 @@ return {
           end,
         },
       },
+      display = {
+        action_palette = {
+          opts = {
+            show_preset_actions = false,
+            show_preset_prompts = false,
+          },
+        },
+      },
       extensions = {
         mcphub = {
           callback = "mcphub.extensions.codecompanion",
