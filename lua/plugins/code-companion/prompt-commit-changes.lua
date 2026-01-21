@@ -40,6 +40,9 @@ return {
               ### Tools you can use:
                 - @{cmd_runner}: A tool that allows you to run shell commands. Use this to get the git diff and to stage and commit changes.
                 - @{file_reader}: A tool that allows you to read file contents. Use this to read new or modified files for context.
+
+              ### Variables you have access to:
+                - #{mcp:neovim://workspace}: Gives comprenhensive information about the current workspace, including file paths and contents.
               ]],
       },
     },
