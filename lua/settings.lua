@@ -9,6 +9,7 @@ vim.g.maplocalleader = " " -- Set local leader key to space
 -- Options
 -- ------------------------------------------------
 vim.o.cursorline = true -- Highlight the text line of the cursor
+vim.o.clipboard = "unnamedplus" -- Use system clipboard for all operations
 vim.o.fillchars = "eob: " -- Set space as eob(end of buffer) character
 vim.o.mouse = "a" -- Enable trackpad/mouse suppont in all modes
 vim.o.number = true -- Show line numbers in the gutter
