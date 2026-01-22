@@ -7,7 +7,7 @@ require("lazy-bootstrap")
 
 -- Settings
 require("settings")
-require("keybindings")
+require("keymaps")
 
 -- Initialize Plugin Manager
 local lazySpec = { { import = "plugins" } }
