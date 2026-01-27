@@ -30,14 +30,18 @@ return {
         role = "user",
         content = [[
               ### Steps to follow:
-                1. Get the current changes made in the current branch using `git diff main..`.
-                2. Read and analyze the git diff output to understand the changes made.
-                3. Read other files in the current directory if necessary to get context about the changes.
-                4. Perform a thorough code review based on the changes identified in the git diff.
+                1. Get the info of the current branch using @{git__git_branch}.
+                2. Get the log of commits in the current branch using @{git__git_log}.
+                3. Get the diff between the current branch and the main branch using @{git__git_diff}.
+                4. Analyze the git diff to identify the changes made in the codebase.
+                5. Read the contents of the modified or newly added files using @{read_file} for better context.
+                6. Read any other files that might be relevant to understand the changes better.
+                7. Provide a detailed code review, highlighting both strengths and areas for improvement.
+                8. Suggest specific improvements or refactoring where applicable.
+                9. Ensure your feedback is clear, actionable, and respectful.
 
-              ### Tools you can use:
-                - @{cmd_runner}: A tool that allows you to run shell commands. Use this to get the git diff and to stage and commit changes.
-                - @{file_reader}: A tool that allows you to read file contents. Use this to read new or modified files for context.
+              ### Variables you have access to:
+                - #{mcp:neovim://workspace}: Gives comprehensive information about the current workspace, including file paths and contents.
               ]],
       },
     },
