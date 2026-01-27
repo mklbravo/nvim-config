@@ -23,7 +23,7 @@ return {
         content = [[
               ### Steps to follow:
                1. Use @{git__git_diff} and @{git__git_status} to get the git diff of the current changes in the repository.
-               2. Read new or modified files if necessary to get context about the changes.
+               2. Read using @{read_file} new or modified files if necessary to get context about the changes.
                3. Decide if the changes needs to be commites in a single commit or multiple commits.
                4. If multiple commits are needed, break down the changes accordingly and generate separate commit messages for each.
                5. For each required commit, follow these steps:
@@ -35,11 +35,8 @@ return {
                  6. Stage the relevant changes for this commit using @{git__git_add}.
                  7. Commit the changes using the @{git__git_commit} generated conventional commit message and commit description.
 
-              ### Tools you can use:
-                - @{file_reader}: A tool that allows you to read file contents. Use this to read new or modified files for context.
-
               ### Variables you have access to:
-                - #{mcp:neovim://workspace}: Gives comprenhensive information about the current workspace, including file paths and contents.
+                - #{mcp:neovim://workspace}: Gives comprehensive information about the current workspace, including file paths and contents.
 
               NOTE: First analyze the changes and wait for my confirmation before proceeding to commit the changes.
               ]],
