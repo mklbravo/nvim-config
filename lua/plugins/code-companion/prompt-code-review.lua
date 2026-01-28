@@ -29,6 +29,9 @@ return {
       {
         role = "user",
         content = [[
+              ### Setup tasks
+                 Get the root path of the git repository using @{cmd_runner} and the command `git rev-parse --show-toplevel`.
+
               ### Steps to follow:
                 1. Get the info of the current branch using @{git__git_branch}.
                 2. Get the log of commits in the current branch using @{git__git_log}.

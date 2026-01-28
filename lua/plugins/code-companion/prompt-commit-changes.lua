@@ -21,6 +21,9 @@ return {
       {
         role = "user",
         content = [[
+              ### Setup tasks
+                 Get the root path of the git repository using @{cmd_runner} and the command `git rev-parse --show-toplevel`.
+
               ### Steps to follow:
                1. Use @{git__git_diff} and @{git__git_status} to get the git diff of the current changes in the repository.
                2. Read using @{read_file} new or modified files if necessary to get context about the changes.
