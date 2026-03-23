@@ -8,7 +8,12 @@
 return {
   opts = {
     enabled = true,
-    sources = {},
+    sources = {
+      buffers = {
+        current = false, -- exclude current buffer
+        sort_lastused = true,
+      },
+    },
   },
   keys = {
     -- Top Pickers & Explorer
