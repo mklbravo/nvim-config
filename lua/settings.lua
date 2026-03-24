@@ -33,6 +33,13 @@ vim.o.smartindent = true -- Enable smart auto-indentation for new lines
 vim.o.tabstop = 2 -- Number of spaces that a <Tab> character represents
 
 -- ------------------------------------------------
+-- Fold Settings
+-- ------------------------------------------------
+vim.o.foldmethod = "expr" -- Use an expression to define folds
+vim.o.foldexpr = "nvim_treesitter#foldexpr()" -- Use Treesitter for folding expressions
+vim.o.foldenable = false -- Start with all folds open
+
+-- ------------------------------------------------
 -- Neovide Settings
 -- ------------------------------------------------
 if vim.g.neovide then
@@ -42,4 +49,3 @@ end
 
 -- Command for Neovide remote
 vim.cmd("command! -nargs=0 SetRemoteConfig set guifont=MonaspiceAr\\ Nerd\\ Font\\ Mono:h12")
-
