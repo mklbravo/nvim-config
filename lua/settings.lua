@@ -38,14 +38,3 @@ vim.o.tabstop = 2 -- Number of spaces that a <Tab> character represents
 vim.o.foldmethod = "expr" -- Use an expression to define folds
 vim.o.foldexpr = "nvim_treesitter#foldexpr()" -- Use Treesitter for folding expressions
 vim.o.foldenable = false -- Start with all folds open
-
--- ------------------------------------------------
--- Neovide Settings
--- ------------------------------------------------
-if vim.g.neovide then
-  vim.o.guifont = "MonaspiceAr NFM:11,FiraCode Nerd Font:h12"
-  vim.g.neovide_cursor_vfx_mode = "sonicboom"
-end
-
--- Command for Neovide remote
-vim.cmd("command! -nargs=0 SetRemoteConfig set guifont=MonaspiceAr\\ Nerd\\ Font\\ Mono:h12")
