@@ -36,5 +36,5 @@ vim.o.tabstop = 2 -- Number of spaces that a <Tab> character represents
 -- Fold Settings
 -- ------------------------------------------------
 vim.o.foldmethod = "expr" -- Use an expression to define folds
-vim.o.foldexpr = "nvim_treesitter#foldexpr()" -- Use Treesitter for folding expressions
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use Treesitter for folding expressions
 vim.o.foldenable = false -- Start with all folds open
