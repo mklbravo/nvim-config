@@ -14,3 +14,6 @@ local lazySpec = { { import = "plugins" } }
 local lazyConfig = { ui = { border = "rounded" } }
 
 require("lazy").setup(lazySpec, lazyConfig)
+
+-- Treesitter config (language list, parser install, highlight autocmd)
+require("config.treesitter").setup()
