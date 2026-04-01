@@ -22,6 +22,7 @@ M.lang_ft_map = {
   json = "json",
   lua = "lua",
   markdown = "markdown",
+  php = "php",
   python = "python",
   rust = "rust",
   toml = "toml",
