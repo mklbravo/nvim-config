@@ -33,12 +33,8 @@ M.lang_ft_map = {
 }
 
 function M.setup()
-  -- Install Treesitter parsers (keys of the map)
-  local parsers = {}
-  for lang, _ in pairs(M.lang_ft_map) do
-    table.insert(parsers, lang)
-  end
-  require("nvim-treesitter").install(parsers)
+  -- Install Treesitter parsers for all managed languages
+  require("nvim-treesitter").install(vim.tbl_keys(M.lang_ft_map))
 
   -- Build a set of filetypes to avoid duplicates (multiple parsers might use the same filetype)
   local fts_set = {}
