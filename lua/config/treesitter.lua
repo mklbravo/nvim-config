@@ -48,12 +48,26 @@ function M.setup()
     table.insert(filetypes, ft)
   end
 
+  -- Enable Treesitter features for managed filetypes
   vim.api.nvim_create_autocmd("FileType", {
-    pattern = table.concat(filetypes, ","),
-    callback = function()
-      vim.treesitter.start()
+    pattern = filetypes,
+    callback = function(args)
+      local ft = args.match
+      local lang = vim.treesitter.language.get_lang(ft) or ft
+
+      -- Check if parser exists and enable features
+      local ok = pcall(vim.treesitter.language.inspect, lang)
+      if ok then
+        -- Enable syntax highlighting
+        vim.treesitter.start()
+        -- Enable code folding
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo.foldmethod = "expr"
+        -- Enable indentation (provided by nvim-treesitter)
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
     end,
-    desc = "Ensure Treesitter highlighting for managed filetypes",
+    desc = "Enable Treesitter features for managed filetypes",
   })
 end
 
