@@ -22,6 +22,7 @@ M.lang_ft_map = {
   json = "json",
   lua = "lua",
   markdown = "markdown",
+  php = "php",
   python = "python",
   rust = "rust",
   toml = "toml",
@@ -32,12 +33,8 @@ M.lang_ft_map = {
 }
 
 function M.setup()
-  -- Install Treesitter parsers (keys of the map)
-  local parsers = {}
-  for lang, _ in pairs(M.lang_ft_map) do
-    table.insert(parsers, lang)
-  end
-  require("nvim-treesitter").install(parsers)
+  -- Install Treesitter parsers for all managed languages
+  require("nvim-treesitter").install(vim.tbl_keys(M.lang_ft_map))
 
   -- Build a set of filetypes to avoid duplicates (multiple parsers might use the same filetype)
   local fts_set = {}
@@ -51,12 +48,26 @@ function M.setup()
     table.insert(filetypes, ft)
   end
 
+  -- Enable Treesitter features for managed filetypes
   vim.api.nvim_create_autocmd("FileType", {
-    pattern = table.concat(filetypes, ","),
-    callback = function()
-      vim.treesitter.start()
+    pattern = filetypes,
+    callback = function(args)
+      local ft = args.match
+      local lang = vim.treesitter.language.get_lang(ft) or ft
+
+      -- Check if parser exists and enable features
+      local ok = pcall(vim.treesitter.language.inspect, lang)
+      if ok then
+        -- Enable syntax highlighting
+        vim.treesitter.start()
+        -- Enable code folding
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo.foldmethod = "expr"
+        -- Enable indentation (provided by nvim-treesitter)
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end
     end,
-    desc = "Ensure Treesitter highlighting for managed filetypes",
+    desc = "Enable Treesitter features for managed filetypes",
   })
 end
 
