@@ -5,9 +5,10 @@
 return {
   "catppuccin/nvim",
   init = function()
-    vim.cmd.colorscheme("catppuccin-macchiato")
+    vim.cmd.colorscheme("catppuccin-nvim")
   end,
   opts = {
+    flavour = "macchiato", -- latte, frappe, macchiato, mocha
     integrations = {
       dap = true,
       dap_ui = true,
