@@ -13,7 +13,7 @@ return {
     options = {
       globalstatus = true,
       icons_enabled = true,
-      theme = "catppuccin",
+      theme = "catppuccin-nvim",
     },
     sections = {
       -- Section C
