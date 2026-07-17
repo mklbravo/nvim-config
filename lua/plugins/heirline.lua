@@ -11,7 +11,9 @@ return {
     -- Enable tabline display
     vim.o.showtabline = 2
 
+    -- Load Heirline and utility functions
     local heirline = require("heirline")
+    local conditions = require("heirline.conditions")
 
     -- Compose components from submodules
     local Diagnostics = require("plugins.heirline.diagnostics")
@@ -69,6 +71,14 @@ return {
       statusline = StatusLine,
       tabline = Tabline,
       winbar = Breadcrumb,
+      opts = {
+        disable_winbar_cb = function(args)
+          return conditions.buffer_matches({
+            buftype = { "nofile", "prompt", "help", "quickfix" },
+            filetype = { "^git.*", "fugitive", "Trouble", "dashboard", "snacks_terminal" },
+          }, args.buf)
+        end,
+      },
     })
   end,
 }
