@@ -4,7 +4,10 @@ local has_devicons, devicons = pcall(require, "nvim-web-devicons")
 -- Helper to safely get icon, with fallback
 local function get_icon(filename)
   if has_devicons then
-    return devicons.get_icon(filename, nil, { default = true })
+    local icon = devicons.get_icon(filename, nil, { default = true })
+    if icon then
+      return icon
+    end
   end
   return "f"  -- Generic file icon fallback
 end
