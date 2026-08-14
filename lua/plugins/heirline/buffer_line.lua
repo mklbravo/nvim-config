@@ -37,7 +37,9 @@ return function()
       end,
       hl = function(self)
         if self.is_active then
-          return { fg = colors.blue }
+          return { fg = colors.blue, bg = colors.surface0 }
+        else
+          return { bg = colors.crust }
         end
       end,
     },
