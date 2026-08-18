@@ -59,11 +59,9 @@ return {
       Ruler,
     }
 
-    local TablineOffset = require("plugins.heirline.tabline_offset")
     local TablineBuffers = require("plugins.heirline.tabline_buffers")
 
     local Tabline = {
-      TablineOffset,
       TablineBuffers(),
     }
 
