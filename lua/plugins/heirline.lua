@@ -70,6 +70,7 @@ return {
       tabline = Tabline,
       winbar = Breadcrumb,
       opts = {
+        colors = colors.setup,
         disable_winbar_cb = function(args)
           return conditions.buffer_matches({
             buftype = { "nofile", "prompt", "help", "quickfix" },

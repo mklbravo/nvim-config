@@ -1,81 +1,106 @@
--- Get catppuccin palette colors
-local ok, clrs = pcall(require, "catppuccin.palettes")
-if not ok then
-  -- Fallback if catppuccin is not loaded
+local utils = require("heirline.utils")
+
+local color_names = {
+  "rosewater",
+  "flamingo",
+  "pink",
+  "mauve",
+  "red",
+  "maroon",
+  "peach",
+  "yellow",
+  "green",
+  "teal",
+  "sky",
+  "sapphire",
+  "blue",
+  "lavender",
+  "text",
+  "subtext1",
+  "subtext0",
+  "overlay2",
+  "overlay1",
+  "overlay0",
+  "surface2",
+  "surface1",
+  "surface0",
+  "base",
+  "mantle",
+  "crust",
+  "fg",
+  "bg",
+  "orange",
+  "cyan",
+  "grey",
+  "grey_dark",
+}
+
+local M = {}
+
+-- Components use aliases so Heirline can update their values after a theme change.
+for _, name in ipairs(color_names) do
+  M[name] = "heirline_" .. name
+end
+
+local function get_color(group, attribute, fallback)
+  return utils.get_highlight(group)[attribute] or fallback
+end
+
+function M.setup()
+  local normal_fg = get_color("Normal", "fg", 0xffffff)
+  local normal_bg = get_color("Normal", "bg", 0x000000)
+  local statusline_fg = get_color("StatusLine", "fg", normal_fg)
+  local statusline_bg = get_color("StatusLine", "bg", normal_bg)
+  local comment_fg = get_color("Comment", "fg", statusline_fg)
+  local cursorline_bg = get_color("CursorLine", "bg", statusline_bg)
+  local visual_bg = get_color("Visual", "bg", cursorline_bg)
+  local folded_bg = get_color("Folded", "bg", visual_bg)
+  local tabline_bg = get_color("TabLineFill", "bg", statusline_bg)
+
+  local red = get_color("DiagnosticError", "fg", normal_fg)
+  local yellow = get_color("DiagnosticWarn", "fg", normal_fg)
+  local blue = get_color("Function", "fg", normal_fg)
+  local cyan = get_color("DiagnosticInfo", "fg", normal_fg)
+  local green = get_color("String", "fg", normal_fg)
+  local teal = get_color("DiagnosticHint", "fg", cyan)
+  local sky = get_color("Special", "fg", cyan)
+  local peach = get_color("Constant", "fg", yellow)
+  local lavender = get_color("Statement", "fg", blue)
+
   return {
-    -- Accent colors
-    rosewater = "#F5E0DC",
-    flamingo = "#F2CDCD",
-    pink = "#F5C2E7",
-    mauve = "#CBA6F7",
-    red = "#F38BA8",
-    maroon = "#EBA0AC",
-    peach = "#FAB387",
-    yellow = "#F9E2AF",
-    green = "#A6E3A1",
-    teal = "#94E2D5",
-    sky = "#89DCEB",
-    sapphire = "#74C7EC",
-    blue = "#89B4FA",
-    lavender = "#B4BEFE",
-    -- Text colors
-    text = "#CDD6F4",
-    subtext1 = "#BAC2DE",
-    subtext0 = "#A6ADC8",
-    -- Overlay colors
-    overlay2 = "#9399B2",
-    overlay1 = "#7F849C",
-    overlay0 = "#6C7086",
-    -- Surface colors
-    surface2 = "#585B70",
-    surface1 = "#45475A",
-    surface0 = "#313244",
-    -- Base colors
-    base = "#1E1E2E",
-    mantle = "#181825",
-    crust = "#11111B",
+    heirline_rosewater = sky,
+    heirline_flamingo = red,
+    heirline_pink = lavender,
+    heirline_mauve = lavender,
+    heirline_red = red,
+    heirline_maroon = red,
+    heirline_peach = peach,
+    heirline_yellow = yellow,
+    heirline_green = green,
+    heirline_teal = teal,
+    heirline_sky = sky,
+    heirline_sapphire = get_color("Directory", "fg", blue),
+    heirline_blue = blue,
+    heirline_lavender = lavender,
+    heirline_text = normal_fg,
+    heirline_subtext1 = statusline_fg,
+    heirline_subtext0 = comment_fg,
+    heirline_overlay2 = statusline_fg,
+    heirline_overlay1 = comment_fg,
+    heirline_overlay0 = comment_fg,
+    heirline_surface2 = folded_bg,
+    heirline_surface1 = visual_bg,
+    heirline_surface0 = cursorline_bg,
+    heirline_base = normal_bg,
+    heirline_mantle = statusline_bg,
+    heirline_crust = tabline_bg,
+    heirline_fg = statusline_fg,
+    heirline_bg = statusline_bg,
+    heirline_orange = peach,
+    heirline_cyan = cyan,
+    heirline_grey = cursorline_bg,
+    heirline_grey_dark = visual_bg,
   }
 end
 
-local palette = clrs.get_palette()
-
-return {
-  -- Accent colors
-  rosewater = palette.rosewater,
-  flamingo = palette.flamingo,
-  pink = palette.pink,
-  mauve = palette.mauve,
-  red = palette.red,
-  maroon = palette.maroon,
-  peach = palette.peach,
-  yellow = palette.yellow,
-  green = palette.green,
-  teal = palette.teal,
-  sky = palette.sky,
-  sapphire = palette.sapphire,
-  blue = palette.blue,
-  lavender = palette.lavender,
-  -- Text colors
-  text = palette.text,
-  subtext1 = palette.subtext1,
-  subtext0 = palette.subtext0,
-  -- Overlay colors
-  overlay2 = palette.overlay2,
-  overlay1 = palette.overlay1,
-  overlay0 = palette.overlay0,
-  -- Surface colors
-  surface2 = palette.surface2,
-  surface1 = palette.surface1,
-  surface0 = palette.surface0,
-  -- Base colors
-  base = palette.base,
-  mantle = palette.mantle,
-  crust = palette.crust,
-  -- Semantic aliases for convenience
-  fg = palette.text,
-  bg = palette.base,
-  orange = palette.peach,
-  cyan = palette.sky,
-  grey = palette.surface0,
-  grey_dark = palette.surface1,
-}
+return M
