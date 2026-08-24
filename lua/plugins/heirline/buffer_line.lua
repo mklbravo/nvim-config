@@ -40,9 +40,9 @@ return function()
       end,
       hl = function(self)
         if self.is_active then
-          return { fg = colors.blue, bg = colors.surface0 }
+          return { fg = colors.primary, bg = colors.surface }
         else
-          return { bg = colors.crust }
+          return { bg = colors.tabline_background }
         end
       end,
     },
@@ -54,9 +54,9 @@ return function()
       end,
       hl = function(self)
         if self.is_active then
-          return { fg = colors.text, bg = colors.surface0, bold = true }
+          return { fg = colors.text, bg = colors.surface, bold = true }
         else
-          return { fg = colors.subtext0, bg = colors.crust }
+          return { fg = colors.text_muted, bg = colors.tabline_background }
         end
       end,
     },
@@ -67,9 +67,9 @@ return function()
       end,
       hl = function(self)
         if self.is_active then
-          return { fg = colors.text, bg = colors.surface0, bold = true }
+          return { fg = colors.text, bg = colors.surface, bold = true }
         else
-          return { fg = colors.subtext0, bg = colors.crust }
+          return { fg = colors.text_muted, bg = colors.tabline_background }
         end
       end,
     },
@@ -83,9 +83,9 @@ return function()
       end,
       hl = function(self)
         if self.is_active then
-          return { fg = colors.red, bg = colors.surface0 }
+          return { fg = colors.error, bg = colors.surface }
         else
-          return { fg = colors.red, bg = colors.crust }
+          return { fg = colors.error, bg = colors.tabline_background }
         end
       end,
     },
@@ -94,9 +94,9 @@ return function()
       provider = " ×",
       hl = function(self)
         if self.is_active then
-          return { fg = colors.text, bg = colors.surface0 }
+          return { fg = colors.text, bg = colors.surface }
         else
-          return { fg = colors.subtext0, bg = colors.crust }
+          return { fg = colors.text_muted, bg = colors.tabline_background }
         end
       end,
       on_click = {
@@ -114,9 +114,9 @@ return function()
       provider = " ",
       hl = function(self)
         if self.is_active then
-          return { bg = colors.surface0 }
+          return { bg = colors.surface }
         else
-          return { bg = colors.crust }
+          return { bg = colors.tabline_background }
         end
       end,
     },

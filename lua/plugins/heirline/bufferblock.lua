@@ -33,9 +33,9 @@ return function()
       end,
       hl = function(self)
         if self.is_active then
-          return { fg = colors.blue, bold = true }
+          return { fg = colors.primary, bold = true }
         else
-          return { fg = colors.grey }
+          return { fg = colors.text_muted }
         end
       end,
     },
@@ -58,13 +58,13 @@ return function()
         end
         return ""
       end,
-      hl = { fg = colors.red },
+      hl = { fg = colors.error },
     },
     {
       provider = function(self)
         return " "
       end,
-      hl = { fg = colors.red },
+      hl = { fg = colors.error },
       on_click = {
         callback = function(_, minwid)
           vim.api.nvim_buf_delete(minwid, { force = false })
@@ -79,7 +79,7 @@ return function()
       provider = function()
         return "|"
       end,
-      hl = { fg = colors.grey },
+      hl = { fg = colors.text_muted },
     },
   }
 end

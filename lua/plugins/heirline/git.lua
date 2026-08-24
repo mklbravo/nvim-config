@@ -25,7 +25,7 @@ return {
       end
       return (self.status_dict.added and self.status_dict.added > 0) and ("  " .. self.status_dict.added) or ""
     end,
-    hl = { fg = colors.green },
+    hl = { fg = colors.success },
   },
   {
     provider = function(self)
@@ -34,7 +34,7 @@ return {
       end
       return (self.status_dict.changed and self.status_dict.changed > 0) and ("  " .. self.status_dict.changed) or ""
     end,
-    hl = { fg = colors.yellow },
+    hl = { fg = colors.warning },
   },
   {
     provider = function(self)
@@ -43,6 +43,6 @@ return {
       end
       return (self.status_dict.removed and self.status_dict.removed > 0) and ("  " .. self.status_dict.removed) or ""
     end,
-    hl = { fg = colors.red },
+    hl = { fg = colors.error },
   },
 }

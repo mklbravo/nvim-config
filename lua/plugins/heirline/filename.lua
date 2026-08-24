@@ -11,7 +11,7 @@ return {
       local icon = (has_devicons and devicons.get_icon(name, nil, { default = true })) or ""
       return " " .. icon .. " " .. name .. " "
     end,
-    hl = { bg = colors.surface0, fg = colors.text, bold = true },
+    hl = { bg = colors.surface, fg = colors.text, bold = true },
   },
   {
     provider = function()
@@ -20,7 +20,7 @@ return {
       end
       return ""
     end,
-    hl = { bg = colors.surface0, fg = colors.sapphire },
+    hl = { bg = colors.surface, fg = colors.modified },
   },
   {
     provider = function()
@@ -29,12 +29,12 @@ return {
       end
       return ""
     end,
-    hl = { bg = colors.surface0, fg = colors.flamingo },
+    hl = { bg = colors.surface, fg = colors.readonly },
   },
   {
     provider = "◤",
     hl = function()
-      return { bg = colors.bg, fg = colors.surface0 }
+      return { bg = colors.statusline_background, fg = colors.surface }
     end,
   },
 }
