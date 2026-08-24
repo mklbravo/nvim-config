@@ -30,24 +30,24 @@ return {
     local StatusLine = {
       static = {
         mode_colors_map = {
-          n = colors.blue,
-          i = colors.green,
-          v = colors.yellow,
-          V = colors.yellow,
-          [string.char(22)] = colors.yellow,
-          c = colors.cyan,
-          s = colors.red,
-          S = colors.red,
-          [string.char(19)] = colors.red,
-          R = colors.red,
-          t = colors.cyan,
+          n = colors.mode_normal,
+          i = colors.mode_insert,
+          v = colors.mode_visual,
+          V = colors.mode_visual,
+          [string.char(22)] = colors.mode_visual,
+          c = colors.mode_command,
+          s = colors.mode_select,
+          S = colors.mode_select,
+          [string.char(19)] = colors.mode_select,
+          R = colors.mode_replace,
+          t = colors.mode_command,
         },
         mode_color = function(self)
           local mode = vim.fn.mode(1):sub(1, 1)
-          return self.mode_colors_map[mode] or colors.blue
+          return self.mode_colors_map[mode] or colors.mode_normal
         end,
       },
-      hl = { fg = colors.fg, bg = colors.bg },
+      hl = { fg = colors.statusline_foreground, bg = colors.statusline_background },
       ViMode,
       FileNameBlock,
       Git,

@@ -4,5 +4,5 @@ return {
   provider = function()
     return string.upper(vim.bo.filetype or "none")
   end,
-  hl = { fg = colors.cyan, bold = true },
+  hl = { fg = colors.info, bold = true },
 }

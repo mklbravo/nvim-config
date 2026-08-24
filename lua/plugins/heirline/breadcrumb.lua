@@ -3,7 +3,7 @@ local colors = require("plugins.heirline.colors")
 return {
   {
     provider = "  ",
-    hl = { fg = colors.peach },
+    hl = { fg = colors.accent_alt },
   },
   {
     init = function(self)
@@ -32,9 +32,9 @@ return {
           hl = function(self)
             -- Make the last segment (filename) bold
             if self.segments[i + 1] == nil then
-              return { fg = colors.lavender, bold = true }
+              return { fg = colors.secondary, bold = true }
             else
-              return { fg = colors.lavender }
+              return { fg = colors.secondary }
             end
           end,
           condition = function(self)
@@ -45,7 +45,7 @@ return {
         -- Separator component (only if there's a next segment)
         table.insert(components, {
           provider = " / ",
-          hl = { fg = colors.peach },
+          hl = { fg = colors.accent_alt },
           condition = function(self)
             return self.segments[i] ~= nil and self.segments[i + 1] ~= nil
           end,

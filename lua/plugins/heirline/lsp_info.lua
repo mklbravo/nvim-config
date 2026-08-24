@@ -31,7 +31,7 @@ return {
   },
   {
     provider = "  ",
-    hl = { fg = colors.green, bold = true },
+    hl = { fg = colors.success, bold = true },
   },
   {
     provider = function(self)
@@ -40,7 +40,7 @@ return {
       end
       return table.concat(self.client_names, ", ")
     end,
-    hl = { fg = colors.sky },
+    hl = { fg = colors.accent },
   },
   right_separator,
 }

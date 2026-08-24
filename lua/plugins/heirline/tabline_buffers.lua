@@ -7,11 +7,11 @@ return function()
     BufferLine(),
     {
       provider = "◄",
-      hl = { fg = colors.subtext0, bg = colors.crust },
+      hl = { fg = colors.text_muted, bg = colors.tabline_background },
     },
     {
       provider = "►",
-      hl = { fg = colors.subtext0, bg = colors.crust },
+      hl = { fg = colors.text_muted, bg = colors.tabline_background },
     }
   )
 end

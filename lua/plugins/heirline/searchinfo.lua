@@ -27,9 +27,9 @@ return {
     end,
     hl = function(self)
       if self.total > 0 then
-        return { fg = colors.sky, bold = true }
+        return { fg = colors.accent, bold = true }
       else
-        return { fg = colors.subtext0 }
+        return { fg = colors.text_muted }
       end
     end,
   },

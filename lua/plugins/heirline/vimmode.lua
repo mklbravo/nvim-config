@@ -48,17 +48,17 @@ return {
     hl = function(self)
       local color = self.mode_color(self)
       self.fg = color
-      return { bg = color, fg = colors.grey, bold = true }
+      return { bg = color, fg = colors.surface, bold = true }
     end,
   },
   {
     provider = "◤",
     hl = function(self)
-      return { bg = colors.surface1, fg = self.mode_color(self) }
+      return { bg = colors.surface_alt, fg = self.mode_color(self) }
     end,
   },
   {
     provider = "◤",
-    hl = { bg = colors.surface0, fg = colors.surface1 },
+    hl = { bg = colors.surface, fg = colors.surface_alt },
   },
 }
